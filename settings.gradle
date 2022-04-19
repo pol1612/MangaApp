@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'MangaApp'
-include('app', 'list', 'utilities')
+include('app', 'domain', 'utilities')
