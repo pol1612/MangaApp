@@ -21,7 +21,15 @@ public class App {
 //         System.out.println(WordUtils.capitalize(result));
         try(var connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_1", "root", null);){
             var statement=connection.createStatement();
-            statement.executeUpdate("insert into test_1.patat values (9,9,9,9);");
+            var preparedStatement=connection.prepareStatement("select * from test_1.patat where asadsads=?");
+            //statement.executeUpdate("insert into test_1.patat values (9,9,9,9);");
+            //statement.executeUpdate("select * from test_1.patat");
+//            var resultSet=statement.executeQuery("select * from test_1.patat");
+            preparedStatement.setInt(1,Integer.parseInt(args[0]));
+            var resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                System.out.println("asadsads: "+resultSet.getInt("asadsads")+" asasasasas: "+resultSet.getInt("asasasasas"));
+            }
         }
     }
 }
