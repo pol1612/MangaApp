@@ -20,6 +20,7 @@ public class App {
 //         String result = join(tokens);
 //         System.out.println(WordUtils.capitalize(result));
         try(var connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_1", "root", null);){
+            connection.setAutoCommit(false); //automaticamente esta true
             var statement=connection.createStatement();
             var preparedStatement=connection.prepareStatement("select * from test_1.patat where asadsads=?");
             //statement.executeUpdate("insert into test_1.patat values (9,9,9,9);");
@@ -30,6 +31,7 @@ public class App {
             while(resultSet.next()){
                 System.out.println("asadsads: "+resultSet.getInt("asadsads")+" asasasasas: "+resultSet.getInt("asasasasas"));
             }
+            connection.commit();
         }
     }
 }
