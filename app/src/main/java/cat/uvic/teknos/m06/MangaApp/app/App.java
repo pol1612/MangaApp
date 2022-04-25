@@ -10,12 +10,18 @@ import static cat.uvic.teknos.m06.MangaApp.utilities.StringUtils.split;
 import static cat.uvic.teknos.m06.MangaApp.app.MessageUtils.getMessage;
 
 import org.apache.commons.text.WordUtils;
+import java.sql.SQLException;
+import java.sql.DriverManager;
 
 public class App {
-    public static void main(String[] args) {
-        LinkedList tokens;
-        tokens = split(getMessage());
-        String result = join(tokens);
-        System.out.println(WordUtils.capitalize(result));
+    public static void main(String[] args)  throws SQLException {
+//         LinkedList tokens;
+//         tokens = split(getMessage());
+//         String result = join(tokens);
+//         System.out.println(WordUtils.capitalize(result));
+        try(var connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_1", "root", null);){
+            var statement=connection.createStatement();
+            statement.executeUpdate("insert into test_1.patat values (9,9,9,9);");
+        }
     }
 }

@@ -9,6 +9,7 @@ plugins {
 dependencies {
     implementation 'org.apache.commons:commons-text'
     implementation project(':utilities')
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
 }
 
 application {
