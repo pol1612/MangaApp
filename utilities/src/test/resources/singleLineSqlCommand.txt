@@ -1,1 +1,5 @@
-create table a( num int not null);
+drop database if exists uni_tests;
+create database uni_tests;
+use uni_test;
+create table A (id int(4) not null);
+create table B (id int(4) not null);
