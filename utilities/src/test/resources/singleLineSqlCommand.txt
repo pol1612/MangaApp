@@ -1,0 +1,1 @@
+create table a( num int not null);
