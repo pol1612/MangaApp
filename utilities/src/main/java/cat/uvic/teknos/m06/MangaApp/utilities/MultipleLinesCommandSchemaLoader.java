@@ -7,33 +7,35 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.sql.DriverManager;
+import java.util.Scanner;
 
-public class SingleLineCommandSchemaLoader implements SchemaLoader{
+public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
     private final String schemaPath;
     private final ConnectionProperties connectionProperties;
 
-    public SingleLineCommandSchemaLoader(String schemaPath,ConnectionProperties connectionProperties){
-        this.schemaPath=schemaPath;
-        this.connectionProperties=connectionProperties;
+    public MultipleLinesCommandSchemaLoader(String schemaPath, ConnectionProperties connectionProperties) {
+        this.schemaPath = schemaPath;
+        this.connectionProperties = connectionProperties;
     }
 
     @Override
     public void load(){
-        //open db connection
-        //read file
-
         try(var connection = DriverManager.getConnection(
                 connectionProperties.getUrl(), connectionProperties.getUser(), connectionProperties.getPassword());
-            var inputStream=new BufferedReader(new FileReader(schemaPath, Charset.forName("utf-8")));
+            var inputStream=new Scanner(new FileReader(schemaPath, Charset.forName("utf-8")));
             var statement=connection.createStatement();
-            )
-        {
-            String sql=null;
-            while((sql=inputStream.readLine())!=null){
-                if(!sql.isEmpty()){
-                    statement.executeUpdate(sql);
+        ){
+            String command;
+
+
+            while(inputStream.hasNextLine()){
+                command="";
+                while(command.indexOf(';')==-1){
+                    command+=inputStream.nextLine();
                 }
+                statement.executeUpdate(command);
             }
+
         }catch(SQLException e){
             throw new SchemaLoaderException(e);
         }catch(FileNotFoundException e){
