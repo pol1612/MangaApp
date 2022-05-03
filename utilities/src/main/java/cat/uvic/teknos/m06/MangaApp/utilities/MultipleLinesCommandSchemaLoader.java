@@ -35,23 +35,31 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                     command+=inputStream.nextLine();
                 }
                 statement.executeUpdate(command);
-                System.out.println(command);
+
             }
         }catch(SQLSyntaxErrorException e){
             try(var connection = DriverManager.getConnection(
                     connectionProperties.getUrl(), connectionProperties.getUser(), connectionProperties.getPassword());
                     var statement=connection.createStatement();
-                    var preparedStatement=connection.prepareStatement("INSERT INTO syntax_exceptions(syntax_exceptions_messages) VALUES(?);");
+                    var preparedStatement=connection.prepareStatement("INSERT INTO syntax_exceptions(date,user,database_used,syntax_exceptions_messages) VALUES(CURRENT_TIMESTAMP,?,?,?);");
                         ){
                 String message;
+                String user1;
+                String user;
+                String db;
+                String db1;
+                user1=connectionProperties.getUser();
+                user="'"+user1+"'";
+                db1=connectionProperties.getUrl();
+                db="'"+db1+"'";
                 message="'"+e.getMessage()+"'";
-                String a="INSERT INTO syntax_exceptions(syntax_exceptions_messages) VALUES("+message+");";
                 statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
                 statement.executeUpdate("USE exceptions;");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(syntax_exceptions_messages VARCHAR(255) );");
-                preparedStatement.setString(1,message);
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(date Date,user VARCHAR(15),database_used VARCHAR(100),syntax_exceptions_messages VARCHAR(255));");
+                preparedStatement.setString(1,user);
+                preparedStatement.setString(2,db);
+                preparedStatement.setString(3,message);
                 preparedStatement.executeUpdate();
-                System.out.println(message);
             }catch(SQLException e2){
                 throw new SchemaLoaderException(e2);
             }
