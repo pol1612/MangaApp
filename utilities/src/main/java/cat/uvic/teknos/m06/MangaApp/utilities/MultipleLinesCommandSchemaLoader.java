@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.sql.DriverManager;
+import java.sql.SQLSyntaxErrorException;
 import java.util.Scanner;
 
 public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
@@ -34,8 +35,26 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                     command+=inputStream.nextLine();
                 }
                 statement.executeUpdate(command);
+                System.out.println(command);
             }
-
+        }catch(SQLSyntaxErrorException e){
+            try(var connection = DriverManager.getConnection(
+                    connectionProperties.getUrl(), connectionProperties.getUser(), connectionProperties.getPassword());
+                    var statement=connection.createStatement();
+                    var preparedStatement=connection.prepareStatement("INSERT INTO syntax_exceptions(syntax_exceptions_messages) VALUES(?);");
+                        ){
+                String message;
+                message="'"+e.getMessage()+"'";
+                String a="INSERT INTO syntax_exceptions(syntax_exceptions_messages) VALUES("+message+");";
+                statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
+                statement.executeUpdate("USE exceptions;");
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(syntax_exceptions_messages VARCHAR(255) );");
+                preparedStatement.setString(1,message);
+                preparedStatement.executeUpdate();
+                System.out.println(message);
+            }catch(SQLException e2){
+                throw new SchemaLoaderException(e2);
+            }
         }catch(SQLException e){
             throw new SchemaLoaderException(e);
         }catch(FileNotFoundException e){

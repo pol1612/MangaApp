@@ -1,6 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.utilities.exceptions;
 
-public class SchemaLoaderException extends RuntimeException{
+public class SchemaLoaderException extends RuntimeException {
     public SchemaLoaderException() {
     }
 
@@ -19,6 +19,8 @@ public class SchemaLoaderException extends RuntimeException{
     public SchemaLoaderException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
+
 }
 
 
