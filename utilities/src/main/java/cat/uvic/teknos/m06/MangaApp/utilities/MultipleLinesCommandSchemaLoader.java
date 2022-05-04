@@ -27,6 +27,7 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
             var statement=connection.createStatement();
         ){
             String command;
+            String[] lineParts;
             String line;
 
             while(inputStream.hasNextLine()){
@@ -35,7 +36,13 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                     line="";
                     line=inputStream.nextLine();
                     if(line.contains("--")){
-                        line="";
+                        if(line.startsWith("--")){
+                            line="";
+                        }
+                        else{
+                            lineParts=line.split("--");
+                            line=lineParts[0];
+                        }
                     }
                     command+=line;
                 }

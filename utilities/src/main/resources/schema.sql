@@ -1,5 +1,5 @@
 --pollo
-DROP database   IF EXISTS MANGA_APP;
+DROP database   IF EXISTS MANGA_APP;--pol
 --pol
 CREATE DATABASE  IF NOT EXISTS MANGA_APP;
 
