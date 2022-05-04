@@ -9,7 +9,7 @@ class MultipleLinesCommandSchemaLoaderTest {
     @Test
     void load() {
         var connectionProperties=new ConnectionProperties();
-        connectionProperties.setUrl("jdbc:mysql://localhost:3306/mangaapp");
+        connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
         var schemaLoader= new MultipleLinesCommandSchemaLoader("src/main/resources/schema.sql",connectionProperties);
         assertDoesNotThrow(() ->{

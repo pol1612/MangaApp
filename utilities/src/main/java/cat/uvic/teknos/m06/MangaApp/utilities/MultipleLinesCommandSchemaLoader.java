@@ -27,12 +27,17 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
             var statement=connection.createStatement();
         ){
             String command;
-
+            String line;
 
             while(inputStream.hasNextLine()){
                 command="";
-                while(command.indexOf(';')==-1){
-                    command+=inputStream.nextLine();
+                while(command.indexOf(';')==-1) {
+                    line="";
+                    line=inputStream.nextLine();
+                    if(line.contains("--")){
+                        line="";
+                    }
+                    command+=line;
                 }
                 statement.executeUpdate(command);
 
