@@ -43,6 +43,9 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                             line=lineParts[0];
                         }
                     }
+//                    if(line.contains("/*")){
+//
+//                    }
                     command+=line;
                 }
                 statement.executeUpdate(command);
@@ -63,9 +66,10 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                 db1=connectionProperties.getUrl();
                 db="'"+db1+"'";
                 message="'"+e.getMessage()+"'";
+//                statement.executeUpdate("DROP DATABASE IF EXISTS exceptions;");
                 statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
                 statement.executeUpdate("USE exceptions;");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,date Date,user VARCHAR(15),database_used VARCHAR(100),syntax_exceptions_messages VARCHAR(255));");
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,date Timestamp,user VARCHAR(15),database_used VARCHAR(100),syntax_exceptions_messages VARCHAR(255));");
                 preparedStatement.setString(1,user);
                 preparedStatement.setString(2,db);
                 preparedStatement.setString(3,message);
