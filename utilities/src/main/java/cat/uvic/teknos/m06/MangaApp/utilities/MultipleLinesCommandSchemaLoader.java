@@ -1,13 +1,12 @@
 package cat.uvic.teknos.m06.MangaApp.utilities;
 import cat.uvic.teknos.m06.MangaApp.utilities.exceptions.SchemaLoaderException;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 import java.sql.SQLSyntaxErrorException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
@@ -34,6 +33,7 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                 while(command.indexOf(';')==-1) {
                     line="";
                     line=inputStream.nextLine();
+                    System.out.println("patata");
                     if(line.contains("--")){
                         if(line.startsWith("--")){
                             line="";
@@ -43,12 +43,16 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                             line=lineParts[0];
                         }
                     }
-//                    if(line.contains("/*")){
-//
-//                    }
+
                     command+=line;
                 }
                 statement.executeUpdate(command);
+            }
+            try{
+                var file=new File(schemaPath);
+                
+            }catch (NullPointerException e){
+
             }
         }catch(SQLSyntaxErrorException e){
             try(var connection = DriverManager.getConnection(
@@ -80,9 +84,11 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
         }catch(SQLException e){
             throw new SchemaLoaderException(e);
         }catch(FileNotFoundException e){
-            throw new SchemaLoaderException("This file"+schemaPath+"doesn't exist");
+            throw new SchemaLoaderException("This file "+schemaPath+" doesn't exist");
         }catch(IOException e){
             throw new SchemaLoaderException("IO Exception",e);
+        }catch (NoSuchElementException e) {
+
         }
     }
 }
