@@ -4,7 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MultipleLinesCommandSchemaLoaderTest {
+class
+
+
+
+MultipleLinesCommandSchemaLoaderTest {
 
     @Test
     void load() {
