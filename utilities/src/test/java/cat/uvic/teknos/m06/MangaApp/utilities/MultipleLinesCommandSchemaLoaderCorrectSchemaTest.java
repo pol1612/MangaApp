@@ -4,15 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MultipleLinesCommandSchemaLoaderTest {
+class
+
+
+MultipleLinesCommandSchemaLoaderCorrectSchemaTest {
 
     @Test
     void load() {
-        var connectionProperties = new ConnectionProperties();
+        var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
-        var schemaLoader = new MultipleLinesCommandSchemaLoader("src/test/resources/multipleLinesSqlCommand.sql", connectionProperties);
-        assertDoesNotThrow(() -> {
+        var schemaLoader= new MultipleLinesCommandSchemaLoader("src/main/resources/schema.sql",connectionProperties);
+        assertDoesNotThrow(() ->{
             schemaLoader.load();
         });
     }
