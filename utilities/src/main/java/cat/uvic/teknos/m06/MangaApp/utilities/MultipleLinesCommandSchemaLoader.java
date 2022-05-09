@@ -46,17 +46,11 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                 }
                 statement.executeUpdate(command);
             }
-            try{
-                var file=new File(schemaPath);
-                
-            }catch (NullPointerException e){
-
-            }
         }catch(SQLSyntaxErrorException e){
             try(var connection = DriverManager.getConnection(
                     connectionProperties.getUrl(), connectionProperties.getUser(), connectionProperties.getPassword());
                     var statement=connection.createStatement();
-                    var preparedStatement=connection.prepareStatement("INSERT INTO syntax_exceptions(date,user,database_used,syntax_exceptions_messages) VALUES(CURRENT_TIMESTAMP,?,?,?);");
+                    var preparedStatement=connection.prepareStatement("INSERT INTO exceptions.syntax_exceptions(date,user,database_used,syntax_exceptions_messages) VALUES(CURRENT_TIMESTAMP,?,?,?);");
                         ){
                 String message;
                 String user1;
@@ -70,7 +64,7 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                 message="'"+e.getMessage()+"'";
 
 //                statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
-                statement.executeUpdate("USE exceptions;");
+//                statement.executeUpdate("USE exceptions;");
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,date Timestamp,user VARCHAR(15),database_used VARCHAR(100),syntax_exceptions_messages VARCHAR(255));");
                 preparedStatement.setString(1,user);
                 preparedStatement.setString(2,db);
@@ -79,6 +73,7 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
             }catch(SQLException e2){
                 throw new SchemaLoaderException(e2);
             }
+            throw new SchemaLoaderException(e);
         }catch(SQLException e){
             throw new SchemaLoaderException(e);
         }catch(FileNotFoundException e){
