@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import cat.uvic.teknos.m06.MangaApp.utilities.exceptions.SchemaLoaderException;
+
 class MultipleLinesCommandSchemaLoaderWrongSchemaTest {
 
     @Test
@@ -12,7 +14,7 @@ class MultipleLinesCommandSchemaLoaderWrongSchemaTest {
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
         var schemaLoader = new MultipleLinesCommandSchemaLoader("src/test/resources/multipleLinesSqlCommand.sql", connectionProperties);
-        assertDoesNotThrow(() -> {
+        assertThrows(SchemaLoaderException.class,() -> {
             schemaLoader.load();
         });
     }
