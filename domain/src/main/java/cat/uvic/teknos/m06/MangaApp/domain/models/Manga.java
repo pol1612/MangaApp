@@ -1,10 +1,30 @@
 package cat.uvic.teknos.m06.MangaApp.domain.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Manga {
     private int mangaId;
     private String title;
     private String description;
     private int coverId;
+    private List<Genre> genres= new ArrayList<>();
+
+    public void setCoverId(int coverId) {
+        this.coverId = coverId;
+    }
+
+    public int getCoverId() {
+        return coverId;
+    }
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
     public int getMangaId() {
         return mangaId;
     }
@@ -29,13 +49,13 @@ public class Manga {
         this.description = description;
     }
 
-    public int getCoverId() {
-        return coverId;
-    }
-
     public void setCoverId(Cover c) {
         coverId=c.getCoverId();
     }
-
-
+    public void AddGenre(Genre g){
+        genres.add(g);
+    }
+    public void RemoveGenre(Genre g){
+        genres.remove(g);
+    }
 }
