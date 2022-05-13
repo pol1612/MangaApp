@@ -63,8 +63,8 @@ public class MultipleLinesCommandSchemaLoader implements SchemaLoader{
                 db="'"+db1+"'";
                 message="'"+e.getMessage()+"'";
 
-//                statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
-//                statement.executeUpdate("USE exceptions;");
+                statement.executeUpdate("CREATE DATABASE IF NOT EXISTS exceptions;");
+                statement.executeUpdate("USE exceptions;");
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS syntax_exceptions(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,date Timestamp,user VARCHAR(15),database_used VARCHAR(100),syntax_exceptions_messages VARCHAR(255));");
                 preparedStatement.setString(1,user);
                 preparedStatement.setString(2,db);
