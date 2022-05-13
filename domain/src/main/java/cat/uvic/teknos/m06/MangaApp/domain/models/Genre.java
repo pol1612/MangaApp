@@ -3,6 +3,7 @@ package cat.uvic.teknos.m06.MangaApp.domain.models;
 public class Genre {
     private int genreId;
     private String name;
+    private String description;
 
     public int getGenreId() {
         return genreId;
@@ -28,6 +29,5 @@ public class Genre {
         this.description = description;
     }
 
-    private String description;
 
 }
