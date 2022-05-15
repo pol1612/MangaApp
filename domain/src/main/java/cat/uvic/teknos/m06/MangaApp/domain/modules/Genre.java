@@ -1,4 +1,4 @@
-package cat.uvic.teknos.m06.MangaApp.domain.models;
+package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
 public class Genre {
     private int genreId;

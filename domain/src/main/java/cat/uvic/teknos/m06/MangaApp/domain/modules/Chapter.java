@@ -1,4 +1,4 @@
-package cat.uvic.teknos.m06.MangaApp.domain.models;
+package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
 import java.sql.Date;
 
@@ -9,7 +9,7 @@ public class Chapter {
     private int cahpterNumber;
     private String chapterTitle;
 
-    public int getMangaId() {
+    public int getMangaId(){
         return mangaId;
     }
 
