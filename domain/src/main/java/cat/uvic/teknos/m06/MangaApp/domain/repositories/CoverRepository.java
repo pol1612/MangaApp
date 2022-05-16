@@ -5,7 +5,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class CoverRepository implements RepositoriesDo{
+public class CoverRepository implements RepositoriesDo <Cover,Integer>{
     private Connection connection;
     private Cover cover;
     CoverRepository(Connection connection, Cover cover){
@@ -45,7 +45,7 @@ public class CoverRepository implements RepositoriesDo{
     }
 
     @Override
-    public void GetById() {
+    public List<> GetById(int id) {
 
     }
 

@@ -22,7 +22,7 @@ public class MangaRepository implements RepositoriesDo {
     }
 
     @Override
-    public void GetById() {
+    public void GetById(int id) {
 
     }
 
