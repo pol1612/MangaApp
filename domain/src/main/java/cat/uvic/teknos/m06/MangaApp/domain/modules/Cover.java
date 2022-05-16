@@ -2,23 +2,24 @@ package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
 public class Cover {
     private int coverId;
-    private String cover;
+    private String cover_path;
     private int width;
     private int height;
+
     public int getCoverId() {
         return coverId;
     }
 
+    public String getCover_path() {
+        return cover_path;
+    }
+
+    public void setCover_path(String cover_path) {
+        this.cover_path = cover_path;
+    }
+
     public void setCoverId(int coverId) {
         this.coverId = coverId;
-    }
-
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
     }
 
     public int getWidth() {
