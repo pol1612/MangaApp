@@ -1,24 +1,24 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
 
+import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 
-public class MangaRepository implements RepositoriesDo {
+public class CoverRepository implements RepositoriesDo{
     private Connection connection;
-    private Manga manga;
-    MangaRepository(Connection connection, Manga manga){
+    private Cover cover;
+    CoverRepository(Connection connection, Cover cover){
         this.connection=connection;
-        this.manga=manga;
+        this.cover=cover;
     }
     @Override
     public void save() {
-
+    
     }
 
     @Override
     public void delete() {
+
     }
 
     @Override
