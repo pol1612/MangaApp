@@ -5,3 +5,7 @@
 plugins {
     id 'cat.uvic.teknos.m06.MangaApp.java-library-conventions'
 }
+
+dependencies {
+    test group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+}

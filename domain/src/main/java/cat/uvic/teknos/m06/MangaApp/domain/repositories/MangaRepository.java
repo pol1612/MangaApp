@@ -22,11 +22,11 @@ public class MangaRepository implements RepositoriesDo<Manga, Integer> {
 
     //@Override
     public List<Manga> GetById(int id){
-
+        return null;
     }
 
     //@Override
     public List<Manga> GetAll() {
-
+        return null;
     }
 }
