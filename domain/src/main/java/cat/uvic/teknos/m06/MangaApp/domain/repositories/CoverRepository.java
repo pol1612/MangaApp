@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
+import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 
@@ -9,8 +10,8 @@ import java.sql.SQLException;
 import java.util.List;
 public class CoverRepository implements RepositoriesDo <Cover,Integer>{
     private final Connection connection;
-    CoverRepository(Connection connection){
-        this.connection=connection;
+    CoverRepository(ConnectionManager connectionManager){
+        this.connection=connectionManager.getConnection();
     }
     @Override
     public void save(Cover cover) {

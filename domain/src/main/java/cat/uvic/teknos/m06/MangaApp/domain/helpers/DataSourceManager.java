@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataSourceManager {
+public class DataSourceManager implements ConnectionManager{
     private ConnectionProperties connectionProperties;
     public DataSourceManager(ConnectionProperties connectionProperties){
        this.connectionProperties=connectionProperties;
