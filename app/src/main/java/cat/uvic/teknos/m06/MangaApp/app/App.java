@@ -3,12 +3,28 @@
  */
 package cat.uvic.teknos.m06.MangaApp.app;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
+import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
+import cat.uvic.teknos.m06.MangaApp.domain.repositories.CoverRepository;
+import cat.uvic.teknos.m06.MangaApp.utilities.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.utilities.SchemaLoader;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
 public class App {
     public static void main(String[] args)  throws SQLException {
+            Cover berserkCover=new Cover();
+            berserkCover.setCoverId(0);
+            berserkCover.setCover_path("images/berserk.jpg");
+            berserkCover.setWidth(150);
+            berserkCover.setHeight(270);
+            var connectionProperties=new ConnectionProperties();
+            connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
+            connectionProperties.setUser("root");
+            connectionProperties.setPassword(null);
+            CoverRepository coverRepository= new CoverRepository(connectionProperties);
+
+
     }
 }

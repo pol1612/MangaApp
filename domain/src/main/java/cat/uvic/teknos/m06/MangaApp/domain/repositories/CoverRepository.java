@@ -1,19 +1,19 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
+import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import java.util.List;
 public class CoverRepository implements RepositoriesDo <Cover,Integer>{
-    private Connection connection;
-    private Cover cover;
-    CoverRepository(Connection connection, Cover cover){
+    private final Connection connection;
+    CoverRepository(Connection connection){
         this.connection=connection;
-        this.cover=cover;
     }
     @Override
-    public void save() {
+    public void save(Cover cover) {
     try{
         var preparedStatement1=connection.prepareStatement("INSERT INTO MANGA_APP.COVER VALUES(?,?,?);");
         var preparedStatement2=connection.prepareStatement("UPDATE MANGA_APP.COVER SET COVER_PATH=?,WIDTH=?, HEIGHT=? WHERE COVER_ID=?;");
@@ -40,17 +40,17 @@ public class CoverRepository implements RepositoriesDo <Cover,Integer>{
     }
 
     @Override
-    public void delete() {
+    public void delete(Cover cover) {
 
     }
 
-    @Override
-    public List<> GetById(int id) {
-
+    //@Override
+    public List<Cover> GetById(int id) {
+        return null;
     }
 
-    @Override
-    public void GetAll() {
-
+    //@Override
+    public List<Cover> GetAll() {
+        return null;
     }
 }

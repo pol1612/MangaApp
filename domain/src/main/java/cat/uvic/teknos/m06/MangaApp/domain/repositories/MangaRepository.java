@@ -4,30 +4,29 @@ import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-public class MangaRepository implements RepositoriesDo {
+public class MangaRepository implements RepositoriesDo<Manga, Integer> {
     private Connection connection;
-    private Manga manga;
     MangaRepository(Connection connection, Manga manga){
         this.connection=connection;
-        this.manga=manga;
     }
     @Override
-    public void save() {
-
-    }
-
-    @Override
-    public void delete() {
-    }
-
-    @Override
-    public void GetById(int id) {
+    public void save(Manga manga) {
 
     }
 
     @Override
-    public void GetAll() {
+    public void delete(Manga manga) {
+    }
+
+    //@Override
+    public List<Manga> GetById(int id){
+
+    }
+
+    //@Override
+    public List<Manga> GetAll() {
 
     }
 }
