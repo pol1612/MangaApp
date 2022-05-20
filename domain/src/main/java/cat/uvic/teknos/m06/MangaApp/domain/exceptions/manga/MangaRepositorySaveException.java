@@ -1,4 +1,4 @@
-package cat.uvic.teknos.m06.MangaApp.domain.exceptions;
+package cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga;
 
 public class MangaRepositorySaveException extends RuntimeException{
     public MangaRepositorySaveException() {

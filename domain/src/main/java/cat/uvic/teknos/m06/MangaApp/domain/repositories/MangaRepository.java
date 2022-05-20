@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class MangaRepository implements RepositoriesDo<Manga, Integer> {
+public class MangaRepository implements RepositoriesDo<Manga> {
     private Connection connection;
     MangaRepository(Connection connection, Manga manga){
         this.connection=connection;
@@ -17,11 +17,11 @@ public class MangaRepository implements RepositoriesDo<Manga, Integer> {
     }
 
     @Override
-    public void delete(Manga manga) {
+    public void delete(Integer manga_id) {
     }
 
-    //@Override
-    public List<Manga> GetById(int id){
+    @Override
+    public Manga GetById(Integer id){
         return null;
     }
 
