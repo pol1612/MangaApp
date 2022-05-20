@@ -1,13 +1,12 @@
-package cat.uvic.teknos.m06.MangaApp.domain.repositories;
+package cat.uvic.teknos.m06.MangaApp.domain.repositories.cover;
 
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
+import cat.uvic.teknos.m06.MangaApp.domain.repositories.CoverRepository;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CoverRepositoryTestSave {
+class CoverRepositoryTestSaveInsert {
 
     @Test
     void save() {
