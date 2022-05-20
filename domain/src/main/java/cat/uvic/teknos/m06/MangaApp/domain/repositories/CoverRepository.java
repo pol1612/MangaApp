@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.CoverRepositoryDeleteException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.CoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
