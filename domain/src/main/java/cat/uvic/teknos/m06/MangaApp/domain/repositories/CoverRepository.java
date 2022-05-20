@@ -1,13 +1,9 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
-import cat.uvic.teknos.m06.MangaApp.domain.exceptions.MangaRepositorySaveException;
-import cat.uvic.teknos.m06.MangaApp.domain.exceptions.MangaRepositorySaveException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.CoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
-import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 public class CoverRepository implements RepositoriesDo <Cover,Integer> {
@@ -41,29 +37,21 @@ public class CoverRepository implements RepositoriesDo <Cover,Integer> {
                 }
         }
         catch (SQLException e) {
-            throw new MangaRepositorySaveException(e);
+            throw new CoverRepositorySaveException(e);
         }
     }
 
         @Override
         public void delete (Cover cover){
             try (var connection=connectionManager.getConnection()){
-                System.out.println(cover.getCoverId());
-                var preparedStatement = connection.prepareStatement("INSERT INTO MANGA_APP.COVER (COVER_PATH,HEIGHT,WIDTH) VALUES(?, ?, ?);");
+                var preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
                 var cover_id = cover.getCoverId();
-                String cover_path = cover.getCover_path();
-                var width = cover.getWidth();
-                var height = cover.getHeight();
-                cover_path = "'" + cover_path + "'";
-                preparedStatement1.setString(1, cover_path);
-                preparedStatement1.setInt(2, width);
-                preparedStatement1.setInt(3, height);
-                if (cover_id == 0) {
-                    preparedStatement1.executeUpdate();
-                }
+                preparedStatement.setInt(1, cover_id);
+                preparedStatement.executeUpdate();
+
             }
             catch (SQLException e) {
-                throw new MangaRepositorySaveException(e);
+                throw new CoverRepositoryDeleteException(e);
             }
     }
 

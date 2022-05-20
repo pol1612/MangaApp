@@ -1,4 +1,4 @@
-package cat.uvic.teknos.m06.MangaApp.domain;
+package cat.uvic.teknos.m06.MangaApp.domain.exceptions;
 
 public class CoverRepositorySaveException extends RuntimeException{
     public CoverRepositorySaveException() {
