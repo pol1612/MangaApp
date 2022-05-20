@@ -22,8 +22,6 @@ class CoverRepositoryTestSave {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         CoverRepository coverRepository=new CoverRepository(dataSourceManager);
-        System.out.println("jjjjjjjjjjjjjjj");
-        System.out.println(berserkCover.getCoverId());
         coverRepository.save(berserkCover);
     }
 }
