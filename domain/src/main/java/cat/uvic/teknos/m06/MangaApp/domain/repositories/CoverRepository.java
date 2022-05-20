@@ -1,6 +1,7 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
@@ -57,7 +58,23 @@ public class CoverRepository implements RepositoriesDo <Cover> {
 
     @Override
     public Cover GetById ( Integer id){
-
+        try(var connection=connectionManager.getConnection()){
+            var preparedStatement=connection.prepareStatement("SELECT * FROM COVER WHERE COVER_ID=?;");
+            var resultSet=preparedStatement.executeQuery();
+            Cover cover=new Cover();
+            var cover_id=resultSet.getInt("cover_id");
+            var cover_path=resultSet.getString("cover_path");
+            var width=resultSet.getInt("width");
+            var height=resultSet.getInt("height");
+            cover.setCoverId(cover_id);
+            cover.setCover_path(cover_path);
+            cover.setWidth(width);
+            cover.setHeight(height);
+            return cover;
+        }
+        catch (SQLException e){
+            throw  new CoverRepositoryGetByIdException(e);
+        }
 
     }
 
