@@ -1,14 +1,15 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryGetAllException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 import jdk.swing.interop.SwingInterOpUtils;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 public class CoverRepository implements RepositoriesDo <Cover> {
     private final ConnectionManager connectionManager;
@@ -86,9 +87,25 @@ public class CoverRepository implements RepositoriesDo <Cover> {
 
     }
 
-    //@Override
+    @Override
     public List<Cover> GetAll () {
-    return null;
+        try(Connection connection= connectionManager.getConnection()){
+            List<Cover> list= new ArrayList<>();
+            Statement statement = connection.createStatement();
+            String sql="SELECT * FROM MANGA_APP.COVER;";
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                Cover cover= new Cover();
+                cover.setCoverId(resultSet.getInt("COVER_ID"));
+                cover.setCover_path(resultSet.getString("COVER_PATH"));
+                cover.setHeight(resultSet.getInt("HEIGHT"));
+                cover.setWidth(resultSet.getInt("WIDTH"));
+                list.add(cover);
+            }
+            return list;
+        }catch (SQLException e){
+            throw new CoverRepositoryGetAllException(e);
+        }
     }
 
 }

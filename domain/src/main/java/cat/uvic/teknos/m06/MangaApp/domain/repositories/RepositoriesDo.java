@@ -6,5 +6,5 @@ public interface RepositoriesDo <Tmodel>{
     void save(Tmodel model);
     void delete(Integer id);
     Tmodel GetById(Integer id);
-    //List<Tmodel> GetAll();
+    List<Tmodel> GetAll();
 }

@@ -25,7 +25,7 @@ public class MangaRepository implements RepositoriesDo<Manga> {
         return null;
     }
 
-    //@Override
+    @Override
     public List<Manga> GetAll() {
         return null;
     }
