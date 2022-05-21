@@ -18,7 +18,7 @@ public class GenreRepository implements RepositoriesDo<Genre>{
     public void save(Genre genre) {
         try (var connection=connectionManager.getConnection()){
             var preparedStatement1 = connection.prepareStatement("INSERT INTO MANGA_APP.GENRE (NAME,DESCRIPTION) VALUES(?, ?);");
-            var preparedStatement2 = connection.prepareStatement("UPDATE MANGA_APP.GENRE SET NAME=?, DECRIPTION=? WHERE GENRE_ID=?;");
+            var preparedStatement2 = connection.prepareStatement("UPDATE MANGA_APP.GENRE SET NAME=?, DESCRIPTION=? WHERE GENRE_ID=?;");
             if (genre.getGenreId() == 0) {
                 preparedStatement1.setString(1, genre.getName());
                 preparedStatement1.setString(2, genre.getDescription());
