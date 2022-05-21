@@ -14,7 +14,7 @@ class GenreRepositoryTestSaveUpdate {
     void save() {
         Genre genre = new Genre();
         genre.setGenreId(3);
-        genre.setName("Isekai");
+        genre.setName("lol");
         genre.setDescription("isekai quartet");
         var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");

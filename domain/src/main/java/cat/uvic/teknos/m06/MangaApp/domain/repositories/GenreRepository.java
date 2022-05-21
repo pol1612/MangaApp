@@ -1,10 +1,14 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositorySaveException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositoryDeleteException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
+import com.mysql.cj.jdbc.ClientPreparedStatement;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,9 +20,9 @@ public class GenreRepository implements RepositoriesDo<Genre>{
     }
     @Override
     public void save(Genre genre) {
-        try (var connection=connectionManager.getConnection()){
-            var preparedStatement1 = connection.prepareStatement("INSERT INTO MANGA_APP.GENRE (NAME,DESCRIPTION) VALUES(?, ?);");
-            var preparedStatement2 = connection.prepareStatement("UPDATE MANGA_APP.GENRE SET NAME=?, DESCRIPTION=? WHERE GENRE_ID=?;");
+        try (Connection connection=connectionManager.getConnection()){
+            PreparedStatement preparedStatement1 = connection.prepareStatement("INSERT INTO MANGA_APP.GENRE (NAME,DESCRIPTION) VALUES(?, ?);");
+            PreparedStatement preparedStatement2 = connection.prepareStatement("UPDATE MANGA_APP.GENRE SET NAME=?, DESCRIPTION=? WHERE GENRE_ID=?;");
             if (genre.getGenreId() == 0) {
                 preparedStatement1.setString(1, genre.getName());
                 preparedStatement1.setString(2, genre.getDescription());
@@ -38,7 +42,13 @@ public class GenreRepository implements RepositoriesDo<Genre>{
 
     @Override
     public void delete(Integer id) {
-
+        try(Connection connection=connectionManager.getConnection()){
+            PreparedStatement preparedStatement= connection.prepareStatement("DELETE FROM MANGA_APP.GENRE WHERE GENRE_ID=?");
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            throw new GenreRepositoryDeleteException(e);
+        }
     }
 
     @Override
