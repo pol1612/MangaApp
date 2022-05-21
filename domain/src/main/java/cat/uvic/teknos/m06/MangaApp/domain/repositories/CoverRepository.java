@@ -51,16 +51,13 @@ public class CoverRepository implements RepositoriesDo <Cover> {
             var preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
             preparedStatement.setInt(1, cover_id);
             preparedStatement.executeUpdate();
-
-        }
-        catch (SQLException e) {
+        }catch (SQLException e) {
             throw new CoverRepositoryDeleteException(e);
         }
     }
 
     @Override
     public Cover GetById ( Integer id){
-        System.out.println(id);
         try(var connection=connectionManager.getConnection()){
             Cover cover=new Cover();
             var preparedStatement=connection.prepareStatement("SELECT * FROM MANGA_APP.COVER WHERE COVER_ID=?;");
@@ -72,7 +69,6 @@ public class CoverRepository implements RepositoriesDo <Cover> {
             var cover_path = resultSet.getString("COVER_PATH");
             var width = resultSet.getInt("WIDTH");
             var height = resultSet.getInt("HEIGHT");
-            System.out.println(123456);
             cover.setCoverId(cover_id);
             cover.setCover_path(cover_path);
             cover.setWidth(width);
