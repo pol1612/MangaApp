@@ -1,8 +1,10 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryGetAllException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.cover.CoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositoryGetAllException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.genre.GenreRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
@@ -10,10 +12,8 @@ import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
 import com.mysql.cj.jdbc.ClientPreparedStatement;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GenreRepository implements RepositoriesDo<Genre>{
@@ -78,7 +78,22 @@ public class GenreRepository implements RepositoriesDo<Genre>{
     }
 
     @Override
-    public List GetAll() {
-        return null;
+    public List<Genre> GetAll() {
+        try(Connection connection= connectionManager.getConnection()){
+            List<Genre> list= new ArrayList<>();
+            Statement statement = connection.createStatement();
+            String sql="SELECT * FROM MANGA_APP.GENRE;";
+            ResultSet resultSet=statement.executeQuery(sql);
+            while (resultSet.next()){
+                Genre genre= new Genre();
+                genre.setGenreId(resultSet.getInt("GENRE_ID"));
+                genre.setName(resultSet.getString("NAME"));
+                genre.setDescription(resultSet.getString("DESCRIPTION"));
+                list.add(genre);
+            }
+            return list;
+        }catch (SQLException e){
+            throw new GenreRepositoryGetAllException(e);
+        }
     }
 }
