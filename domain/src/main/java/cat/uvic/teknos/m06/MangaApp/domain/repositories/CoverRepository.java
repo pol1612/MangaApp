@@ -26,18 +26,17 @@ public class CoverRepository implements RepositoriesDo <Cover> {
             String cover_path = cover.getCover_path();
             var width = cover.getWidth();
             var height = cover.getHeight();
-            cover_path = "'" + cover_path + "'";
-            preparedStatement1.setString(1, cover_path);
-            preparedStatement1.setInt(2, width);
-            preparedStatement1.setInt(3, height);
-            preparedStatement2.setString(1, cover_path);
-            preparedStatement2.setInt(2, width);
-            preparedStatement2.setInt(3, height);
-            preparedStatement2.setInt(4, cover_id);
             if (cover_id == 0) {
+                preparedStatement1.setString(1, cover_path);
+                preparedStatement1.setInt(2, width);
+                preparedStatement1.setInt(3, height);
                 preparedStatement1.executeUpdate();
             }
-            if (cover_id != 0) {
+            else {
+                preparedStatement2.setString(1, cover_path);
+                preparedStatement2.setInt(2, width);
+                preparedStatement2.setInt(3, height);
+                preparedStatement2.setInt(4, cover_id);
                 preparedStatement2.executeUpdate();
             }
         }
