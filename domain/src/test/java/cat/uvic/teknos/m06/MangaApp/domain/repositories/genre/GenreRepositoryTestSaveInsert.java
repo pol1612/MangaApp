@@ -14,8 +14,8 @@ class GenreRepositoryTestSaveInsert {
     void save() {
         Genre genre = new Genre();
         genre.setGenreId(0);
-        genre.setName("Isekai");
-        genre.setDescription("kirito-kun");
+        genre.setName("magic");
+        genre.setDescription("belzebu");
         var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
