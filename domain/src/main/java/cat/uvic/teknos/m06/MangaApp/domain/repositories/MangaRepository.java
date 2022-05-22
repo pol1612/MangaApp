@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
@@ -82,9 +83,33 @@ public class MangaRepository implements RepositoriesDo<Manga> {
     @Override
     public Manga GetById(Integer id){
         try(Connection connection = connectionManager.getConnection()){
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT * FROM MANGA_APP.MANGA WHERE MANGA_ID=?;");
+            PreparedStatement preparedStatement1=connection.prepareStatement("SELECT * FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
+            Manga manga= new Manga();
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            resultSet.next();
+            manga.setMangaId(resultSet.getInt("MANGA_ID"));
+            manga.setTitle(resultSet.getString("TITLE"));
+            manga.setDescription(resultSet.getString("DESCRIPTION"));
+            manga.setCoverId(resultSet.getInt("COVER_ID"));
+            preparedStatement1.setInt(1,manga.getMangaId());
+            ResultSet resultSet1=preparedStatement1.executeQuery();
+            while(resultSet1.next()){
+                PreparedStatement preparedStatement2=connection.prepareStatement("SELECT * FROM MANGA_APP.GENRE WHERE GENRE_ID=?;");
+                Genre genre =new Genre();
+                genre.setGenreId(resultSet1.getInt("GENRE_ID"));
+                preparedStatement2.setInt(1,genre.getGenreId());
+                ResultSet resultSet2=preparedStatement2.executeQuery();
+                resultSet2.next();
+                genre.setName(resultSet2.getString("NAME"));
+                genre.setDescription(resultSet2.getString("DESCRIPTION"));
+                manga.AddGenre(genre);
+            }
+            return manga;
 
         }catch (SQLException e){
-            throw  new 
+            throw  new MangaRepositoryGetByIdException(e);
         }
     }
 
