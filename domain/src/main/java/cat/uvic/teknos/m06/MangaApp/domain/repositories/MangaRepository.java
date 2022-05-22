@@ -1,4 +1,5 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryDeleteException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
@@ -64,9 +65,17 @@ public class MangaRepository implements RepositoriesDo<Manga> {
     @Override
     public void delete(Integer manga_id) {
         try(Connection connection=connectionManager.getConnection()){
-
+            PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.CHAPTER WHERE MANGA_ID=?;");
+            PreparedStatement preparedStatement2=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
+            PreparedStatement preparedStatement3=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA WHERE MANGA_ID=?;");
+            preparedStatement1.setInt(1,manga_id);
+            preparedStatement2.setInt(1,manga_id);
+            preparedStatement3.setInt(1,manga_id);
+            preparedStatement1.executeUpdate();
+            preparedStatement2.executeUpdate();
+            preparedStatement3.executeUpdate();
         }catch (SQLException e){
-            throw new
+            throw new MangaRepositoryDeleteException(e);
         }
     }
 
