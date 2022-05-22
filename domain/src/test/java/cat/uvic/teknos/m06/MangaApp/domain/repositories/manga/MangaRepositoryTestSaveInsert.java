@@ -12,19 +12,16 @@ class MangaRepositoryTestSaveInsert {
 
     @Test
     void save() {
-        Cover c= new Cover();
         Genre g1= new Genre();
         Genre g2= new Genre();
         g1.setGenreId(1);
         g2.setGenreId(3);
-        c.setCoverId(3);
         Manga manga = new Manga();
         manga.setMangaId(0);
-        manga.setTitle("One piece");
+        manga.setTitle("One bbbb");
         manga.setDescription("pirates and shit");
         manga.setCoverId(2);
         System.out.println(manga.getCoverId());
-        manga.setCoverId(c);
         System.out.println(manga.getCoverId());
         manga.AddGenre(g1);
         manga.AddGenre(g2);
