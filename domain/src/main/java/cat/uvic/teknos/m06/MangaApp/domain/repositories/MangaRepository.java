@@ -45,11 +45,12 @@ public class MangaRepository implements RepositoriesDo<Manga> {
 
             }
             else{
-                /*
-                preparedStatement2.setString(1,manga.getTitle());
-                preparedStatement2.setString(2, manga.getDescription());
-                preparedStatement2.setInt(3,manga.getCoverId());
-                preparedStatement2.executeUpdate();*/
+                PreparedStatement preparedStatement3= connection.prepareStatement("UPDATE MANGA_APP.MANGA SET TITLE=?,DESCRIPTION=?,COVER_ID=? WHERE MANGA_ID=?;");
+                preparedStatement3.setString(1,manga.getTitle());
+                preparedStatement3.setString(2,manga.getDescription());
+                preparedStatement3.setInt(3,manga.getCoverId());
+                preparedStatement3.setInt(4,manga.getMangaId());
+                preparedStatement3.execute();
             }
         }catch (SQLException e){
             throw new MangaRepositorySaveException(e);
