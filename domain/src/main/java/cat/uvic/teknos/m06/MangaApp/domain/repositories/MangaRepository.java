@@ -5,10 +5,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,10 +26,13 @@ public class MangaRepository implements RepositoriesDo<Manga> {
                 preparedStatement1.setString(2, manga.getDescription());
                 preparedStatement1.setInt(3, manga.getCoverId());
                 preparedStatement1.executeUpdate();
+                ResultSet resultSet = preparedStatement1.getGeneratedKeys();
+                resultSet.next();
                 for(int i=0;i<manga.getGenres().size();++i){
                     Genre genre=manga.getGenres().get(i);
                     PreparedStatement preparedStatement3=connection.prepareStatement("INSERT INTO MANGA_APP.MANGA_GENRE_RELATIONSHIP VALUES (?,?);");
-                    preparedStatement3.setInt(1,manga.getMangaId());
+                    preparedStatement3.setInt(1,resultSet.getInt(1));
+                    System.out.println(resultSet.getInt(1));
                     preparedStatement3.setInt(2,genre.getGenreId());
                     System.out.println("**************");
                     System.out.println(manga.getMangaId());
@@ -40,6 +40,7 @@ public class MangaRepository implements RepositoriesDo<Manga> {
                     System.out.println("**************");
                     preparedStatement3.executeUpdate();
                     System.out.println("lllllllllllllllllll");
+
                 }
 
             }
