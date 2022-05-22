@@ -18,7 +18,7 @@ class MangaRepositoryTestSaveInsert {
         manga.setMangaId(0);
         manga.setTitle("tttttttttttttttttt");
         manga.setDescription("gg");
-        manga.setCoverId(4);
+        manga.setCoverId(2);
         System.out.println(manga.getCoverId());
         System.out.println(manga.getCoverId());
         manga.AddGenre(g1);

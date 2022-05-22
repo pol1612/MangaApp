@@ -32,25 +32,28 @@ public class MangaRepository implements RepositoriesDo<Manga> {
                     Genre genre=manga.getGenres().get(i);
                     PreparedStatement preparedStatement3=connection.prepareStatement("INSERT INTO MANGA_APP.MANGA_GENRE_RELATIONSHIP VALUES (?,?);");
                     preparedStatement3.setInt(1,resultSet.getInt(1));
-                    System.out.println(resultSet.getInt(1));
                     preparedStatement3.setInt(2,genre.getGenreId());
-                    System.out.println("**************");
-                    System.out.println(manga.getMangaId());
-                    System.out.println(genre.getGenreId());
-                    System.out.println("**************");
                     preparedStatement3.executeUpdate();
-                    System.out.println("lllllllllllllllllll");
-
                 }
 
             }
             else{
                 PreparedStatement preparedStatement3= connection.prepareStatement("UPDATE MANGA_APP.MANGA SET TITLE=?,DESCRIPTION=?,COVER_ID=? WHERE MANGA_ID=?;");
+                PreparedStatement preparedStatement4=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
                 preparedStatement3.setString(1,manga.getTitle());
                 preparedStatement3.setString(2,manga.getDescription());
                 preparedStatement3.setInt(3,manga.getCoverId());
                 preparedStatement3.setInt(4,manga.getMangaId());
-                preparedStatement3.execute();
+                preparedStatement3.executeUpdate();
+                preparedStatement4.setInt(1,manga.getMangaId());
+                preparedStatement4.executeUpdate();
+                for(int i=0;i<manga.getGenres().size();++i){
+                    Genre genre=manga.getGenres().get(i);
+                    PreparedStatement preparedStatement5=connection.prepareStatement("INSERT INTO MANGA_APP.MANGA_GENRE_RELATIONSHIP VALUES (?,?);");
+                    preparedStatement5.setInt(1,manga.getMangaId());
+                    preparedStatement5.setInt(2,genre.getGenreId());
+                    preparedStatement5.executeUpdate();
+                }
             }
         }catch (SQLException e){
             throw new MangaRepositorySaveException(e);
