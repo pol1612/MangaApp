@@ -63,6 +63,11 @@ public class MangaRepository implements RepositoriesDo<Manga> {
 
     @Override
     public void delete(Integer manga_id) {
+        try(Connection connection=connectionManager.getConnection()){
+
+        }catch (SQLException e){
+            throw new
+        }
     }
 
     @Override
