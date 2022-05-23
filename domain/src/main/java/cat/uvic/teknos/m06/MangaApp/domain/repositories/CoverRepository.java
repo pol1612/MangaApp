@@ -48,8 +48,11 @@ public class CoverRepository implements RepositoriesDo <Cover> {
     @Override
     public void delete (Integer cover_id){
         try (var connection=connectionManager.getConnection()){
-            var preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
+            PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA WHERE COVER_ID=?;");
             preparedStatement.setInt(1, cover_id);
+            preparedStatement1.setInt(1,cover_id);
+            preparedStatement1.executeUpdate();
             preparedStatement.executeUpdate();
         }catch (SQLException e) {
             throw new CoverRepositoryDeleteException(e);
