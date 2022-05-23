@@ -70,7 +70,8 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
             chapter.setMangaId(resultSet.getInt("MANGA_ID"));
             chapter.setChapterNumber(resultSet.getInt("CHAPTER_NUMBER"));
             chapter.setChapterTitle(resultSet.getString("CHAPTER_TITLE"));
-            chapter.s
+            chapter.setDateOfUploading(resultSet.getDate("DATE_OF_UPLOADING"));
+            return chapter;
 
         }
         catch (SQLException e){
