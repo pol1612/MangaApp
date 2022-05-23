@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC;
 
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Chapter;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
@@ -19,7 +20,7 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter> {
     try(Connection connection= connectionManager.getConnection()){
 
     }catch (SQLException e){
-        throw new
+        throw new JDBCChapterRepositorySaveException(e);
     }
     }
 

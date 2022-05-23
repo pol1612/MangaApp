@@ -2,9 +2,9 @@ package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
 import java.util.List;
 
-public interface RepositoriesDo <Tmodel>{
+public interface RepositoriesDo <Tmodel,Key>{
     void save(Tmodel model);
-    void delete(Integer id);
-    Tmodel GetById(Integer id);
+    void delete(Key id);
+    Tmodel GetById(Key id);
     List<Tmodel> GetAll();
 }
