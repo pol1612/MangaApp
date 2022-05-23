@@ -9,13 +9,12 @@ class JDBCCoverRepositoryTestDelete {
 
     @Test
     void delete() {
-        var cover_id=2;
         var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCCoverRepository coverRepository=new JDBCCoverRepository(dataSourceManager);
-        coverRepository.delete(cover_id);
+        coverRepository.delete(1);
     }
 }
