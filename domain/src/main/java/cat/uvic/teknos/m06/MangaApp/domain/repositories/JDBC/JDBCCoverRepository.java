@@ -50,10 +50,18 @@ public class JDBCCoverRepository implements RepositoriesDo<Cover> {
         try (var connection=connectionManager.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
             PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA WHERE COVER_ID=?;");
-            preparedStatement.setInt(1, cover_id);
+            PreparedStatement preparedStatement2=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
+            PreparedStatement preparedStatement3=connection.prepareStatement("SELECT MANGA_ID FROM MANGA_APP.MANGA WHERE COVER_ID=?;");
+            preparedStatement3.setInt(1,cover_id);
+            ResultSet resultSet=preparedStatement3.executeQuery();
+            resultSet.next();
+            preparedStatement2.setInt(1,resultSet.getInt("MANGA_ID"));
             preparedStatement1.setInt(1,cover_id);
+            preparedStatement.setInt(1,cover_id);
+            preparedStatement2.executeUpdate();
             preparedStatement1.executeUpdate();
             preparedStatement.executeUpdate();
+
         }catch (SQLException e) {
             throw new JDBCCoverRepositoryDeleteException(e);
         }
