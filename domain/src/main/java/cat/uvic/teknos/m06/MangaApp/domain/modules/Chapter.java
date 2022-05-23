@@ -8,6 +8,7 @@ public class Chapter {
     private int chapterId;
     private int cahpterNumber;
     private String chapterTitle;
+    private Date dateOfUploading;
 
     public int getMangaId(){
         return mangaId;
@@ -56,8 +57,5 @@ public class Chapter {
     public void setDateOfUploading(Date dateOfUploading) {
         this.dateOfUploading = dateOfUploading;
     }
-
-    private Date dateOfUploading;
-
 
 }
