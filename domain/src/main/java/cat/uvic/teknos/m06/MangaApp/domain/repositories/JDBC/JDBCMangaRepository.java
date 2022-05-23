@@ -22,6 +22,7 @@ public class JDBCMangaRepository implements RepositoriesDo<Manga> {
     @Override
     public void save(Manga manga) {
         try(Connection connection= connectionManager.getConnection()){
+            connection.setAutoCommit(false);
             PreparedStatement preparedStatement1=connection.prepareStatement("INSERT INTO MANGA_APP.MANGA (TITLE,DESCRIPTION,COVER_ID) VALUES (?,?,?);", Statement.RETURN_GENERATED_KEYS);
             PreparedStatement preparedStatement2=connection.prepareStatement("UPDATE MANGA_APP.MANGA SET TITLE=?,DESCRIPTION=?,COVER_ID=? WHERE MANGA_ID=?;", Statement.RETURN_GENERATED_KEYS);
 
@@ -59,6 +60,7 @@ public class JDBCMangaRepository implements RepositoriesDo<Manga> {
                     preparedStatement5.executeUpdate();
                 }
             }
+            connection.commit();
         }catch (SQLException e){
             throw new JDBCMangaRepositorySaveException(e);
         }
