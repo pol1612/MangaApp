@@ -9,6 +9,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -59,7 +60,18 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
     @Override
     public Chapter GetById(Integer id) {
         try(Connection connection=connectionManager.getConnection()){
-            
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT * FROM MANGA_APP.CHAPTER WHERE CHAPTER_ID=?;");
+            Chapter chapter=new Chapter();
+            ResultSet resultSet;
+            preparedStatement.setInt(1,id);
+            resultSet=preparedStatement.executeQuery();
+            resultSet.next();
+            chapter.setChapterId(resultSet.getInt("CHAPTER_ID"));
+            chapter.setMangaId(resultSet.getInt("MANGA_ID"));
+            chapter.setChapterNumber(resultSet.getInt("CHAPTER_NUMBER"));
+            chapter.setChapterTitle(resultSet.getString("CHAPTER_TITLE"));
+            chapter.s
+
         }
         catch (SQLException e){
             throw new JDBCChapterRepositoryGetByIdException(e);
