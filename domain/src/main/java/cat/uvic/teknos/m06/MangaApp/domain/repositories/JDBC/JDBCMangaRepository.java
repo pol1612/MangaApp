@@ -70,6 +70,7 @@ public class JDBCMangaRepository implements RepositoriesDo<Manga> {
     @Override
     public void delete(Integer manga_id) {
         try(Connection connection=connectionManager.getConnection()){
+            connection.setAutoCommit(false);
             PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.CHAPTER WHERE MANGA_ID=?;");
             PreparedStatement preparedStatement2=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
             PreparedStatement preparedStatement3=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA WHERE MANGA_ID=?;");
@@ -79,6 +80,7 @@ public class JDBCMangaRepository implements RepositoriesDo<Manga> {
             preparedStatement1.executeUpdate();
             preparedStatement2.executeUpdate();
             preparedStatement3.executeUpdate();
+            connection.commit();
         }catch (SQLException e){
             throw new JDBCMangaRepositoryDeleteException(e);
         }
