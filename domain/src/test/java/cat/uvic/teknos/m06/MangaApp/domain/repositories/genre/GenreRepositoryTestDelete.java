@@ -16,6 +16,7 @@ class GenreRepositoryTestDelete {
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
         connectionProperties.setPassword(null);
+        
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         GenreRepository genreRepository=new GenreRepository(dataSourceManager);
         genreRepository.delete(1);
