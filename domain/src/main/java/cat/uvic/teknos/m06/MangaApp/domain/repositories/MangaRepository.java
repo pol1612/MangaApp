@@ -115,6 +115,10 @@ public class MangaRepository implements RepositoriesDo<Manga> {
 
     @Override
     public List<Manga> GetAll() {
-        return null;
+        try(Connection connection=connectionManager.getConnection()){
+
+        }catch (SQLException e) {
+            throw new
+        }
     }
 }
