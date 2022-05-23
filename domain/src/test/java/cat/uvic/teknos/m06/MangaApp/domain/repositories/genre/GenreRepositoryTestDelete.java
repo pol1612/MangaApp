@@ -18,6 +18,6 @@ class GenreRepositoryTestDelete {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         GenreRepository genreRepository=new GenreRepository(dataSourceManager);
-        genreRepository.delete(2);
+        genreRepository.delete(1);
     }
 }
