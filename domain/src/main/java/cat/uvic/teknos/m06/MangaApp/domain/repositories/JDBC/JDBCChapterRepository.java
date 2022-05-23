@@ -46,7 +46,9 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
     @Override
     public void delete(Integer id) {
         try(Connection connection=connectionManager.getConnection()){
-
+            PreparedStatement preparedStatement=connection.prepareStatement("DELETE FROM MANGA_APP.CHAPTER WHERE CHAPTER_ID=?;");
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
         }
         catch (SQLException e){
             throw new JDBCChapterRepositoryDeleteException(e);
