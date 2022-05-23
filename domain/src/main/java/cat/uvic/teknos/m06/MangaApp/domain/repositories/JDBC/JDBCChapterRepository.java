@@ -9,7 +9,7 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter> {
 
     @Override
     public void save(Chapter chapter) {
-        
+
     }
 
     @Override
