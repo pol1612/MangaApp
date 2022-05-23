@@ -12,9 +12,9 @@ class CoverRepositoryTestSaveInsert {
     void save() {
         Cover berserkCover=new Cover();
         berserkCover.setCoverId(0);
-        berserkCover.setCover_path("images/berserk.jpg");
-        berserkCover.setWidth(150);
-        berserkCover.setHeight(270);
+        berserkCover.setCover_path("images4/berserk.jpg");
+        berserkCover.setWidth(153);
+        berserkCover.setHeight(470);
         var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
