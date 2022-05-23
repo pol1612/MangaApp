@@ -15,6 +15,6 @@ class JDBCCoverRepositoryTestDelete {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCCoverRepository coverRepository=new JDBCCoverRepository(dataSourceManager);
-        coverRepository.delete(1);
+        coverRepository.delete(2);
     }
 }

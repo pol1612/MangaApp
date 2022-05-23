@@ -12,7 +12,7 @@ class JDBCMangaRepositoryTestUpdate {
     @Test
     void save() {
         Manga m= new Manga();
-        m.setMangaId(7);
+        m.setMangaId(3);
         m.setTitle("One piece:monkey d luffy");
         m.setDescription("lol and ninjas");
         m.setCoverId(2);

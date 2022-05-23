@@ -48,6 +48,7 @@ public class JDBCCoverRepository implements RepositoriesDo<Cover> {
     @Override
     public void delete (Integer cover_id){
         try (var connection=connectionManager.getConnection()){
+            connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM MANGA_APP.COVER WHERE COVER_ID=?;");
             PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA WHERE COVER_ID=?;");
             PreparedStatement preparedStatement2=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
@@ -61,7 +62,7 @@ public class JDBCCoverRepository implements RepositoriesDo<Cover> {
             preparedStatement2.executeUpdate();
             preparedStatement1.executeUpdate();
             preparedStatement.executeUpdate();
-
+            connection.commit();
         }catch (SQLException e) {
             throw new JDBCCoverRepositoryDeleteException(e);
         }
