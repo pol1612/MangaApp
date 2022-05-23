@@ -6,7 +6,7 @@ public class Chapter {
     private int mangaId;
     private String mangaTitle;
     private int chapterId;
-    private int cahpterNumber;
+    private int chapterNumber;
     private String chapterTitle;
     private Date dateOfUploading;
 
@@ -34,12 +34,12 @@ public class Chapter {
         this.chapterId = chapterId;
     }
 
-    public int getCahpterNumber() {
-        return cahpterNumber;
+    public int getChapterNumber() {
+        return chapterNumber;
     }
 
-    public void setCahpterNumber(int cahpterNumber) {
-        this.cahpterNumber = cahpterNumber;
+    public void setChapterNumber(int chapterNumber) {
+        this.chapterNumber = chapterNumber;
     }
 
     public String getChapterTitle() {
