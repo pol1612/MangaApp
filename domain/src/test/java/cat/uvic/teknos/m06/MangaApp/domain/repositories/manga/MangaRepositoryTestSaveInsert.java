@@ -29,6 +29,7 @@ class MangaRepositoryTestSaveInsert {
         MangaRepository mangaRepository=new MangaRepository(dataSourceManager);
         mangaRepository.save(manga);
         //el insert d'un manga tmb ha de fer el insert dels genres del manga
-        //el save s'ha de modificar
+        //el sav
+        // e s'ha de modificar
     }
 }

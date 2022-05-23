@@ -1,9 +1,10 @@
-package cat.uvic.teknos.m06.MangaApp.domain.repositories;
+package cat.uvic.teknos.m06.MangaApp.domain.repositories.manga;
 
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
+import cat.uvic.teknos.m06.MangaApp.domain.repositories.MangaRepository;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
