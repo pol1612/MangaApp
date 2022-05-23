@@ -1,6 +1,7 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC;
 
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Chapter;
@@ -57,7 +58,12 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
 
     @Override
     public Chapter GetById(Integer id) {
-        return null;
+        try(Connection connection=connectionManager.getConnection()){
+            
+        }
+        catch (SQLException e){
+            throw new JDBCChapterRepositoryGetByIdException(e);
+        }
     }
 
     @Override
