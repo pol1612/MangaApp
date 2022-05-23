@@ -11,7 +11,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-public class JDBCCoverRepository implements RepositoriesDo<Cover> {
+public class JDBCCoverRepository implements RepositoriesDo<Cover,Integer> {
     private final ConnectionManager connectionManager;
 
         public JDBCCoverRepository(ConnectionManager connectionManager) {

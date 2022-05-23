@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCMangaRepository implements RepositoriesDo<Manga> {
+public class JDBCMangaRepository implements RepositoriesDo<Manga,Integer> {
     private final ConnectionManager connectionManager;
 
     public JDBCMangaRepository(ConnectionManager connectionManager) {

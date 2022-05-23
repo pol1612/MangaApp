@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class JDBCChapterRepository implements RepositoriesDo<Chapter> {
+public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
     private final ConnectionManager connectionManager;
 
     public JDBCChapterRepository(ConnectionManager connectionManager) {

@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCGenreRepository implements RepositoriesDo<Genre> {
+public class JDBCGenreRepository implements RepositoriesDo<Genre,Integer> {
     private final ConnectionManager connectionManager;
 
     public JDBCGenreRepository(ConnectionManager connectionManager) {
