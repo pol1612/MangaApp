@@ -4,9 +4,9 @@ import java.sql.Date;
 
 public class Chapter {
     private int mangaId;
-    private String mangaTitle;
     private int chapterId;
     private int chapterNumber;
+    private String chapterTitle;
     private Date dateOfUploading;
 
     public int getMangaId(){
@@ -16,14 +16,7 @@ public class Chapter {
     public void setMangaId(int mangaId) {
         this.mangaId = mangaId;
     }
-
-    public String getMangaTitle() {
-        return mangaTitle;
-    }
-
-    public void setMangaTitle(String mangaTitle) {
-        this.mangaTitle = mangaTitle;
-    }
+    
 
     public int getChapterId() {
         return chapterId;
@@ -41,6 +34,13 @@ public class Chapter {
         this.chapterNumber = chapterNumber;
     }
 
+    public String getChapterTitle() {
+        return chapterTitle;
+    }
+
+    public void setChapterTitle(String chapterTitle) {
+        this.chapterTitle = chapterTitle;
+    }
 
     public Date getDateOfUploading() {
         return dateOfUploading;
