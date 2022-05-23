@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryDeleteException;
+import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryGetAllException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.manga.MangaRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
@@ -8,6 +9,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -116,9 +118,35 @@ public class MangaRepository implements RepositoriesDo<Manga> {
     @Override
     public List<Manga> GetAll() {
         try(Connection connection=connectionManager.getConnection()){
+            List<Manga> list =new ArrayList<>();
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT * FROM MANGA_APP.MANGA;");
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Manga manga=new Manga();
+                PreparedStatement preparedStatement1=connection.prepareStatement("SELECT * FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE MANGA_ID=?;");
+                manga.setMangaId(resultSet.getInt("MANGA_ID"));
+                manga.setTitle(resultSet.getString("TITLE"));
+                manga.setDescription(resultSet.getString("DESCRIPTION"));
+                manga.setCoverId(resultSet.getInt("COVER_ID"));
+                preparedStatement1.setInt(1,manga.getMangaId());
+                ResultSet resultSet1=preparedStatement1.executeQuery();
+                while(resultSet1.next()){
+                    Genre genre=new Genre();
+                    PreparedStatement preparedStatement2=connection.prepareStatement("SELECT * FROM MANGA_APP.GENRE WHERE GENRE_ID=?;");
+                    genre.setGenreId(resultSet1.getInt("GENRE_ID"));
+                    preparedStatement2.setInt(1,genre.getGenreId());
+                    ResultSet resultSet2=preparedStatement2.executeQuery();
+                    resultSet2.next();
+                    genre.setName(resultSet2.getString("NAME"));
+                    genre.setDescription("DESCRIPTION");
+                    manga.AddGenre(genre);
+                }
+                list.add(manga);
 
+            }
+            return list;
         }catch (SQLException e) {
-            throw new
+            throw new MangaRepositoryGetAllException(e);
         }
     }
 }
