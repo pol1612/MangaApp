@@ -5,7 +5,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.JDBCMangaRepository;
 import org.junit.jupiter.api.Test;
 
-class JDBCMangaRepositoryTestDelete {
+class JDBCMangaRepositoriesDoTestDelete {
 
     @Test
     void delete() {
