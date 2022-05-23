@@ -42,12 +42,14 @@ public class JDBCGenreRepository implements RepositoriesDo<Genre> {
     @Override
     public void delete(Integer id) {
         try(Connection connection=connectionManager.getConnection()){
+            connection.setAutoCommit(false);
             PreparedStatement preparedStatement= connection.prepareStatement("DELETE FROM MANGA_APP.GENRE WHERE GENRE_ID=?");
             PreparedStatement preparedStatement1=connection.prepareStatement("DELETE FROM MANGA_APP.MANGA_GENRE_RELATIONSHIP WHERE GENRE_ID=?;");
             preparedStatement.setInt(1,id);
             preparedStatement1.setInt(1,id);
             preparedStatement1.executeUpdate();
             preparedStatement.executeUpdate();
+            connection.commit();
         }catch (SQLException e){
             throw new JDBCGenreRepositoryDeleteException(e);
         }
