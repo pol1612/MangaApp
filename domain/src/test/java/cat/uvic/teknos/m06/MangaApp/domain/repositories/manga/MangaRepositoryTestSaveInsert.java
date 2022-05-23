@@ -18,10 +18,9 @@ class MangaRepositoryTestSaveInsert {
         g1.setGenreId(1);
         Manga manga = new Manga();
         manga.setMangaId(0);
-        manga.setTitle("berserk2");
-        manga.setDescription("the destiny2 of a man who is dead");
-        manga.setCoverId(2);
-        manga.AddGenre(g1);
+        manga.setTitle("berserk3");
+        manga.setDescription("the destiny3 of a man who is dead");
+        manga.setCoverId(3);
         var connectionProperties=new ConnectionProperties();
         connectionProperties.setUrl("jdbc:mysql://localhost:3306/mysql");
         connectionProperties.setUser("root");
