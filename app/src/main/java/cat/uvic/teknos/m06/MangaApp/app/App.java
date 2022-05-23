@@ -4,13 +4,9 @@
 package cat.uvic.teknos.m06.MangaApp.app;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
 import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
-import cat.uvic.teknos.m06.MangaApp.domain.repositories.CoverRepository;
-import cat.uvic.teknos.m06.MangaApp.utilities.SchemaLoader;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
-import java.sql.Connection;
+
 import java.sql.SQLException;
-import java.sql.DriverManager;
 
 public class App {
     public static void main(String[] args)  throws SQLException {
