@@ -1,8 +1,11 @@
 package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
-
+@Entity
 public class Chapter {
+    @Id
     private int mangaId;
     private int chapterId;
     private int chapterNumber;
