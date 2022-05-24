@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
@@ -83,7 +84,19 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
     @Override
     public List<Chapter> GetAll() {
         try(Connection connection= connectionManager.getConnection()){
-
+            PreparedStatement preparedStatement=connection.prepareStatement("SELECT * FROM MANGA_APP.CHAPTER;");
+            List<Chapter> chapterList=new ArrayList<>();
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Chapter chapter=new Chapter();
+                chapter.setChapterId(resultSet.getInt("CHAPTER_ID"));
+                chapter.setChapterTitle(resultSet.getString("CHAPTER_TITLE"));
+                chapter.setMangaId(resultSet.getInt("MANGA_ID"));
+                chapter.setChapterNumber(resultSet.getInt("CHAPTER_NUMBER"));
+                chapter.setDateOfUploading(resultSet.getDate("DATE_OF_UPLOADING"));
+                chapterList.add(chapter);
+            }
+            return chapterList;
         }
         catch (SQLException e){
             throw new JDBCChapterRepositoryGetAllException(e);
