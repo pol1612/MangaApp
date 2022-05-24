@@ -24,6 +24,5 @@ class JDBCChapterRepositoryTestGetAll {
         List<Chapter> chapterList=new ArrayList<>();
         chapterList=jdbcChapterRepository.GetAll();
         System.out.println(chapterList.get(0).getChapterTitle());
-        System.out.println(chapterList.get(1).getChapterTitle());
     }
 }

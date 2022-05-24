@@ -17,6 +17,6 @@ class JDBCChapterRepositoryTest {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCChapterRepository jdbcChapterRepository=new JDBCChapterRepository(dataSourceManager);
-        jdbcChapterRepository.delete(1);
+        jdbcChapterRepository.delete(2);
     }
 }

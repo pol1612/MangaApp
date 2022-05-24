@@ -19,7 +19,5 @@ class JDBCMangaRepositoryTestGetById {
         Manga manga= JDBCMangaRepository.GetById(9);
         System.out.println(manga.getGenres().get(0).getName());
         System.out.println(manga.getGenres().get(1).getGenreId());
-
-
     }
 }
