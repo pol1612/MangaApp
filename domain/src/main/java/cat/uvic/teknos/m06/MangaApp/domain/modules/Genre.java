@@ -1,6 +1,13 @@
 package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Genre {
+    @Id
+    @GeneratedValue
     private int genreId;
     private String name;
     private String description;

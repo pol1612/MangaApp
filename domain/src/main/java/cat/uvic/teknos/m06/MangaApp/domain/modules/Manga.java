@@ -1,9 +1,14 @@
 package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Manga {
+    @Id
+    @GeneratedValue
     private int mangaId;
     private String title;
     private String description;

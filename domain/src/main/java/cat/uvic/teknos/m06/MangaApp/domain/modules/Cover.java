@@ -1,6 +1,13 @@
 package cat.uvic.teknos.m06.MangaApp.domain.modules;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Cover {
+    @Id
+    @GeneratedValue
     private int coverId;
     private String cover_path;
     private int width;
