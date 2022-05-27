@@ -5,7 +5,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRe
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.chapter.JDBCChapterRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Chapter;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Chapter;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
 
 import java.sql.Connection;

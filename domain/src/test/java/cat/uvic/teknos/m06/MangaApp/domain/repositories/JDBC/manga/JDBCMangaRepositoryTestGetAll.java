@@ -2,7 +2,7 @@ package cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.manga;
 
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Manga;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.JDBCMangaRepository;
 import org.junit.jupiter.api.Test;
 

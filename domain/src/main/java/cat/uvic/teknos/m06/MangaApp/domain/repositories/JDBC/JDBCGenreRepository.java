@@ -4,7 +4,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.genre.JDBCGenreReposi
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.genre.JDBCGenreRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.genre.JDBCGenreRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Genre;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
 
 import java.sql.*;

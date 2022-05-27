@@ -2,14 +2,12 @@ package cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.chapter;
 
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Chapter;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Chapter;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.JDBCChapterRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class JDBCChapterRepositoryTestGetAll {
 

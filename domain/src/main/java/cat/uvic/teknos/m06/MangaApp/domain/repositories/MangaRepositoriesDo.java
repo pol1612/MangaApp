@@ -1,7 +1,7 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories;
 
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Genre;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Manga;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Genre;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Manga;
 
 import java.util.List;
 

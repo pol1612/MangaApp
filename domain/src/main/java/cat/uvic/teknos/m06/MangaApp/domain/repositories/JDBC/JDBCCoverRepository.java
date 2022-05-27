@@ -5,7 +5,7 @@ import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.cover.JDBCCoverReposi
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.cover.JDBCCoverRepositoryGetByIdException;
 import cat.uvic.teknos.m06.MangaApp.domain.exceptions.JDBC.cover.JDBCCoverRepositorySaveException;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Cover;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.RepositoriesDo;
 
 import java.sql.*;

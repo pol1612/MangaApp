@@ -2,7 +2,7 @@ package cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.cover;
 
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Cover;
 import cat.uvic.teknos.m06.MangaApp.domain.repositories.JDBC.JDBCCoverRepository;
 import org.junit.jupiter.api.Test;
 

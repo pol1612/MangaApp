@@ -3,7 +3,7 @@
  */
 package cat.uvic.teknos.m06.MangaApp.app;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.DataSourceManager;
-import cat.uvic.teknos.m06.MangaApp.domain.modules.Cover;
+import cat.uvic.teknos.m06.MangaApp.domain.models.Cover;
 import cat.uvic.teknos.m06.MangaApp.domain.helpers.ConnectionProperties;
 
 import java.sql.SQLException;

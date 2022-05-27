@@ -1,4 +1,4 @@
-package cat.uvic.teknos.m06.MangaApp.domain.modules;
+package cat.uvic.teknos.m06.MangaApp.domain.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
