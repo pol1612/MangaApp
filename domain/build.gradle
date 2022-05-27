@@ -9,4 +9,5 @@ plugins {
 dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
     implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 }
