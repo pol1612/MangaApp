@@ -2,6 +2,7 @@ package cat.uvic.teknos.m06.MangaApp.domain.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
@@ -9,7 +10,7 @@ import java.sql.Date;
 public class Chapter {
     private int mangaId;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int chapterId;
     private int chapterNumber;
     private String chapterTitle;

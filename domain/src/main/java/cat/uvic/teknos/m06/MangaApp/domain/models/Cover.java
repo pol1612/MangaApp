@@ -2,12 +2,13 @@ package cat.uvic.teknos.m06.MangaApp.domain.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Cover {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int coverId;
     private String cover_path;
     private int width;

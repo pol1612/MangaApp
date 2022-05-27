@@ -30,6 +30,13 @@ class JPAGenreRepositoryTest {
     }
     @Test
     void saveUpdate(){
+        var genre=new Genre();
+        genre.setName("water");
+        genre.setDescription("lmao");
+        genre.setGenreId(1);
+        assertDoesNotThrow(()-> {
+            jpaGenreRepository.save(genre);
+        });
 
     }
     @Test
