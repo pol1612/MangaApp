@@ -1,6 +1,7 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories.JPA;
 
 import cat.uvic.teknos.m06.MangaApp.domain.models.Genre;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManagerFactory;
@@ -9,10 +10,15 @@ import javax.persistence.Persistence;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JPAGenreRepositoryTest {
+    private static EntityManagerFactory entityManagerFactory;
+    @BeforeAll
+    static void setUp(){
+        entityManagerFactory=Persistence.createEntityManagerFactory("MangaApp_mysql");
+
+    }
 
     @Test
-    void save() {
-        var entityManagerFactory= Persistence.createEntityManagerFactory("MangaApp_mysql");
+    void saveInsert() {
         var jpaGenreRepository=new JPAGenreRepository(entityManagerFactory);
         var genre=new Genre();
         genre.setName("Martial2 arts");
@@ -22,7 +28,10 @@ class JPAGenreRepositoryTest {
         });
         assertTrue(genre.getGenreId()>0);
     }
+    @Test
+    void saveUpdate(){
 
+    }
     @Test
     void delete() {
     }
