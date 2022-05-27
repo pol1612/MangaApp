@@ -5,13 +5,13 @@
 
         <!-- <class>cat.uvic.teknos.m06.MangaApp.domain.models.Chapter</class> -->
         <!-- <class>cat.uvic.teknos.m06.MangaApp.domain.models.Cover</class> -->
-        <class>>cat.uvic.teknos.m06.MangaApp.domain.models.Genre</class>
+        <class>cat.uvic.teknos.m06.MangaApp.domain.models.Genre</class>
         <!-- <class>>cat.uvic.teknos.m06.MangaApp.domain.models.Manga</class> -->
 
         <properties>
             <!--<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />-->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/MangaApp_jpa" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mangaapp_jpa" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
