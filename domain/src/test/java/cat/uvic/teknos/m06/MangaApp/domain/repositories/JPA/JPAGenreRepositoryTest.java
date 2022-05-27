@@ -18,7 +18,6 @@ class JPAGenreRepositoryTest {
         jpaGenreRepository=new JPAGenreRepository(entityManagerFactory);
 
     }
-
     @Test
     void saveInsert() {
         var genre=new Genre();
