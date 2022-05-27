@@ -16,11 +16,20 @@ public class JPAGenreRepository implements RepositoriesDo<Genre, Integer> {
         if(genre.getGenreId()==0){
             insert(genre);
         }
+        else{
+            update(genre);
+        }
     }
     private void insert(Genre genre){
         var entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(genre);
+        entityManager.getTransaction().commit();
+    }
+    private void update(Genre genre){
+        var entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.merge(genre);
         entityManager.getTransaction().commit();
     }
     @Override
