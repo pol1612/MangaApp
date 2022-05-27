@@ -28,7 +28,7 @@ class JDBCMangaRepositoryTestSaveInsert {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCMangaRepository mangaRepository=new JDBCMangaRepository(dataSourceManager);
-        mangaRepository.save(manga);
+        //mangaRepository.save(manga);
         //el insert d'un manga tmb ha de fer el insert dels genres del manga
         //el sav
         // e s'ha de modificar

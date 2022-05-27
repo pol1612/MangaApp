@@ -21,6 +21,6 @@ class JDBCCoverRepositoryTestSaveUpdate {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCCoverRepository coverRepository=new JDBCCoverRepository(dataSourceManager);
-        coverRepository.save(berserkCover);
+        //coverRepository.save(berserkCover);
     }
 }

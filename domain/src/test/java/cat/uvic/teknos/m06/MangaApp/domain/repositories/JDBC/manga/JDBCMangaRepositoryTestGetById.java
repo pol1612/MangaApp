@@ -16,8 +16,8 @@ class JDBCMangaRepositoryTestGetById {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCMangaRepository JDBCMangaRepository =new JDBCMangaRepository(dataSourceManager);
-        Manga manga= JDBCMangaRepository.GetById(9);
+        /*Manga manga= JDBCMangaRepository.GetById(9);
         System.out.println(manga.getGenres().get(0).getName());
-        System.out.println(manga.getGenres().get(1).getGenreId());
+        System.out.println(manga.getGenres().get(1).getGenreId());*/
     }
 }

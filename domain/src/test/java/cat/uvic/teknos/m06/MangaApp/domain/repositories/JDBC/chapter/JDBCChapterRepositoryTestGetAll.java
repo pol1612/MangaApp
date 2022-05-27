@@ -22,7 +22,7 @@ class JDBCChapterRepositoryTestGetAll {
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCChapterRepository jdbcChapterRepository=new JDBCChapterRepository(dataSourceManager);
         List<Chapter> chapterList=new ArrayList<>();
-        chapterList=jdbcChapterRepository.GetAll();
-        System.out.println(chapterList.get(0).getChapterTitle());
+        /*chapterList=jdbcChapterRepository.GetAll();
+        System.out.println(chapterList.get(0).getChapterTitle());*/
     }
 }

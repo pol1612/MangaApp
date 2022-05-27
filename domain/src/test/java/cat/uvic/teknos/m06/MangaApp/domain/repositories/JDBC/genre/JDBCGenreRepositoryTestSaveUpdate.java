@@ -20,6 +20,6 @@ class JDBCGenreRepositoryTestSaveUpdate {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCGenreRepository JDBCGenreRepository = new JDBCGenreRepository(dataSourceManager);
-        JDBCGenreRepository.save(genre);
+        //JDBCGenreRepository.save(genre);
     }
 }

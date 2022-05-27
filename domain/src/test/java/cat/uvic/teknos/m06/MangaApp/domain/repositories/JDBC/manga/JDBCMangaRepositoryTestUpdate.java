@@ -28,6 +28,6 @@ class JDBCMangaRepositoryTestUpdate {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCMangaRepository mangaRepository=new JDBCMangaRepository(dataSourceManager);
-        mangaRepository.save(m);
+        //mangaRepository.save(m);
     }
 }

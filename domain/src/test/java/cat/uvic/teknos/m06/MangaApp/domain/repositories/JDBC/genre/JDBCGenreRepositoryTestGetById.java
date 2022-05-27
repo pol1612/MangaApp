@@ -15,7 +15,7 @@ class JDBCGenreRepositoryTestGetById {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCGenreRepository genreRepository=new JDBCGenreRepository(dataSourceManager);
-        var cover = genreRepository.GetById(3);
-        System.out.println(cover.getDescription());
+        /*var cover = genreRepository.GetById(3);
+        System.out.println(cover.getDescription());*/
     }
 }

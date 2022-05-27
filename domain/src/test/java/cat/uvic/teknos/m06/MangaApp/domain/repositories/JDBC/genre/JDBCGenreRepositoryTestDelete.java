@@ -16,6 +16,6 @@ class JDBCGenreRepositoryTestDelete {
 
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCGenreRepository genreRepository=new JDBCGenreRepository(dataSourceManager);
-        genreRepository.delete(1);
+        //genreRepository.delete(1);
     }
 }

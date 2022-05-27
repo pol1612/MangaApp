@@ -20,10 +20,10 @@ class JDBCCoverRepositoryTestGetAll {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCCoverRepository coverRepository=new JDBCCoverRepository(dataSourceManager);
-        list=coverRepository.GetAll();
+        /*list=coverRepository.GetAll();
         System.out.println(list.get(0).getCover_path());
         System.out.println(list.get(1).getCoverId());
         System.out.println(list.get(2).getCover_path());
-
+        */
     }
 }

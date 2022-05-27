@@ -19,11 +19,11 @@ class JDBCMangaRepositoryTestGetAll {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCMangaRepository mangaRepository=new JDBCMangaRepository(dataSourceManager);
-        mangaList=mangaRepository.GetAll();
+       /* mangaList=mangaRepository.GetAll();
         System.out.println(mangaList.get(0).getTitle());
         System.out.println(mangaList.get(0).getGenres().get(1).getName());
         System.out.println(mangaList.get(1).getTitle());
         System.out.println(mangaList.get(1).getGenres().get(0).getName());
-        System.out.println(mangaList.get(2).getTitle());
+        System.out.println(mangaList.get(2).getTitle());*/
     }
 }

@@ -15,7 +15,8 @@ class JDBCCoverRepositoryTestGetById {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCCoverRepository JDBCCoverRepository =new JDBCCoverRepository(dataSourceManager);
-        var cover = JDBCCoverRepository.GetById(3);
+        /*var cover = JDBCCoverRepository.GetById(3);
         System.out.println(cover.getCover_path());
+        */
     }
 }

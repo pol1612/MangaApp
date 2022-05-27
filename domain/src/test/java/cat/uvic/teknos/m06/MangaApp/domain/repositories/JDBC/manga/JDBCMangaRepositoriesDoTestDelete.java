@@ -15,6 +15,6 @@ class JDBCMangaRepositoriesDoTestDelete {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCMangaRepository mangaRepository=new JDBCMangaRepository(dataSourceManager);
-        mangaRepository.delete(7);
+       // mangaRepository.delete(7);
     }
 }

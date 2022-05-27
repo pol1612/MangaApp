@@ -19,13 +19,13 @@ class JDBCChapterRepositoryTestGetById {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCChapterRepository jdbcChapterRepository=new JDBCChapterRepository(dataSourceManager);
-        chapter=jdbcChapterRepository.GetById(2);
+        /*chapter=jdbcChapterRepository.GetById(2);
         System.out.println(chapter.getChapterId());
         System.out.println(chapter.getChapterNumber());
         System.out.println(chapter.getChapterTitle());
         System.out.println(chapter.getMangaId());
         System.out.println(chapter.getDateOfUploading());
-
+        */
 
     }
 }

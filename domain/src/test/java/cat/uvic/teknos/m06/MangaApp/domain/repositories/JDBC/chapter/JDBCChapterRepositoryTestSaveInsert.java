@@ -27,6 +27,6 @@ class JDBCChapterRepositoryTestSaveInsert {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCChapterRepository jdbcChapterRepository=new JDBCChapterRepository(dataSourceManager);
-        jdbcChapterRepository.save(chapter);
+        /*jdbcChapterRepository.save(chapter);*/
     }
 }

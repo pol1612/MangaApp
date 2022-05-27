@@ -19,9 +19,10 @@ class JDBCGenreRepositoryTestGetAll {
         connectionProperties.setPassword(null);
         DataSourceManager dataSourceManager=new DataSourceManager(connectionProperties);
         JDBCGenreRepository genreRepository=new JDBCGenreRepository(dataSourceManager);
-        list=genreRepository.GetAll();
+        /*list=genreRepository.GetAll();
         System.out.println(list.get(0).getDescription());
         System.out.println(list.get(1).getName());
         System.out.println(list.get(2).getGenreId());
+        */
     }
 }
