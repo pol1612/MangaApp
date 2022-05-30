@@ -60,9 +60,8 @@ class JPAGenreRepositoryTest {
 
     @Test
     void getById() {
-        var genre=jpaGenreRepository.GetById(2);
-
-
+        var genre=jpaGenreRepository.GetById(1);
+        assertNotNull(genre);
     }
 
     @Test
