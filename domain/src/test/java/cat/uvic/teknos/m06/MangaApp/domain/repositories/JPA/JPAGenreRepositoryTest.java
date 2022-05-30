@@ -33,13 +33,16 @@ class JPAGenreRepositoryTest {
     @Test
     void saveUpdate(){
         var genre=new Genre();
-        genre.setName("water");
+        genre.setName("Science fiction");
         genre.setDescription("poopoo");
         genre.setGenreId(1);
         assertDoesNotThrow(()-> {
             jpaGenreRepository.save(genre);
         });
-
+        var entityManager=entityManagerFactory.createEntityManager();
+        var modifiedGenre=entityManager.find(Genre.class,1);
+        assertEquals("Science fiction", modifiedGenre.getName());
+        entityManager.close();
     }
     @Test
     void delete() {
