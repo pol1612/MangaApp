@@ -46,6 +46,7 @@ public class JPAGenreRepository implements RepositoriesDo<Genre, Integer> {
     @Override
     public List<Genre> GetAll() {
         var entitYManager=entityManagerFactory.createEntityManager();
-        var query=entitYManager.createQuery("SELECT GENRE FROM ")
+        var query=entitYManager.createQuery("SELECT genre FROM Genre genre");
+        return query.getResultList();
     }
 }
