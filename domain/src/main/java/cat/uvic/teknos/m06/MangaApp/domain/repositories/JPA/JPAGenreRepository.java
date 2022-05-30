@@ -36,9 +36,9 @@ public class JPAGenreRepository implements RepositoriesDo<Genre, Integer> {
     public void delete(Integer id) {
         var entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        var genre=GetById(id);
+        var genre=entityManager.find(Genre.class,id);
         if(genre!=null) {
-            entityManager.remove(id);
+            entityManager.remove(genre);
         }
         entityManager.getTransaction().commit();
     }

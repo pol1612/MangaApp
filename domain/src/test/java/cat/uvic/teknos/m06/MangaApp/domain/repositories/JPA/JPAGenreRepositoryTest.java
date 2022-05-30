@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JPAGenreRepositoryTest {
+    public static final int MODEL_TO_DELETE=2;
     private static EntityManagerFactory entityManagerFactory;
     private static JPAGenreRepository jpaGenreRepository;
     @BeforeAll
@@ -27,6 +28,7 @@ class JPAGenreRepositoryTest {
             jpaGenreRepository.save(genre);
         });
         assertTrue(genre.getGenreId()>0);
+
     }
     @Test
     void saveUpdate(){
@@ -41,7 +43,19 @@ class JPAGenreRepositoryTest {
     }
     @Test
     void delete() {
+        var entityManager=entityManagerFactory.createEntityManager();
+        var entityManager1=entityManagerFactory.createEntityManager();
+        var rom=entityManager.find(Genre.class, MODEL_TO_DELETE);
 
+        assertNotNull(rom);
+
+        assertDoesNotThrow(() -> {
+            jpaGenreRepository.delete(MODEL_TO_DELETE);
+        });
+
+        rom=entityManager1.find(Genre.class,MODEL_TO_DELETE);
+
+        assertNull(rom);
     }
 
     @Test
