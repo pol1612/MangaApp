@@ -32,7 +32,7 @@ class JPAGenreRepositoryTest {
     void saveUpdate(){
         var genre=new Genre();
         genre.setName("water");
-        genre.setDescription("lmao");
+        genre.setDescription("poopoo");
         genre.setGenreId(1);
         assertDoesNotThrow(()-> {
             jpaGenreRepository.save(genre);
@@ -41,6 +41,7 @@ class JPAGenreRepositoryTest {
     }
     @Test
     void delete() {
+
     }
 
     @Test
