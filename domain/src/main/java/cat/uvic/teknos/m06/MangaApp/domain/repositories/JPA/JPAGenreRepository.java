@@ -39,11 +39,13 @@ public class JPAGenreRepository implements RepositoriesDo<Genre, Integer> {
 
     @Override
     public Genre GetById(Integer id) {
-        return null;
+        var entityManager=entityManagerFactory.createEntityManager();
+        return entityManager.find(Genre.class,id);
     }
 
     @Override
-    public List GetAll() {
-        return null;
+    public List<Genre> GetAll() {
+        var entitYManager=entityManagerFactory.createEntityManager();
+        var query=entitYManager.createQuery("SELECT GENRE FROM ")
     }
 }

@@ -10,7 +10,7 @@ import java.sql.Date;
 public class Chapter {
     private int mangaId;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int chapterId;
     private int chapterNumber;
     private String chapterTitle;
