@@ -69,5 +69,8 @@ class JPAGenreRepositoryTest {
 
     @Test
     void getAll() {
+        var genres = jpaGenreRepository.GetAll();
+        assertNotNull(genres);
+        assertTrue(genres.size() > 0);
     }
 }
