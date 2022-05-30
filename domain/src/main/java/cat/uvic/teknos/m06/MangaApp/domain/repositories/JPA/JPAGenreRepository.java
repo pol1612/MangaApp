@@ -34,7 +34,10 @@ public class JPAGenreRepository implements RepositoriesDo<Genre, Integer> {
     }
     @Override
     public void delete(Integer id) {
-
+        var entityManager=entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.remove(id);
+        entityManager.getTransaction().commit();
     }
 
     @Override
