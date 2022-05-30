@@ -1,9 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
@@ -13,15 +10,17 @@ public class Manga {
     private int mangaId;
     private String title;
     private String description;
-    private int coverId;
+    @Transient
+    private Cover cover;
+    @Transient
     private List<Genre> genres= new ArrayList<>();
 
     public void setCoverId(int coverId) {
-        this.coverId = coverId;
+        this.cover.setCoverId(coverId);
     }
 
     public int getCoverId() {
-        return coverId;
+        return cover.getCoverId();
     }
     public List<Genre> getGenres() {
         return genres;
@@ -56,7 +55,7 @@ public class Manga {
     }
 
     public void setCoverId(Cover c) {
-        coverId=c.getCoverId();
+        cover.setCoverId(c.getCoverId());
     }
     public void AddGenre(Genre g){
         genres.add(g);
