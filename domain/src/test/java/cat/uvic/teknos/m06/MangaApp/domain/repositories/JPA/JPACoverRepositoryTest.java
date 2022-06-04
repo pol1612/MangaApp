@@ -68,9 +68,14 @@ class JPACoverRepositoryTest {
 
     @Test
     void getById() {
+        var cover=jpaCoverRepository.GetById(2);
+        assertNotNull(cover);
     }
 
     @Test
     void getAll() {
+        var genres=jpaCoverRepository.GetAll();
+        assertNotNull(genres);
+        assertTrue(genres.size()==2);
     }
 }
