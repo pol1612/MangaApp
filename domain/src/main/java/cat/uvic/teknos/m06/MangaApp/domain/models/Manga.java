@@ -10,17 +10,16 @@ public class Manga {
     private int mangaId;
     private String title;
     private String description;
-    @Transient
-    private Cover cover;
+    private int coverId;
     @Transient
     private List<Genre> genres= new ArrayList<>();
 
     public void setCoverId(int coverId) {
-        this.cover.setCoverId(coverId);
+        this.coverId=coverId;
     }
 
     public int getCoverId() {
-        return cover.getCoverId();
+        return coverId;
     }
     public List<Genre> getGenres() {
         return genres;
@@ -54,9 +53,6 @@ public class Manga {
         this.description = description;
     }
 
-    public void setCoverId(Cover c) {
-        cover.setCoverId(c.getCoverId());
-    }
     public void AddGenre(Genre g){
         genres.add(g);
     }

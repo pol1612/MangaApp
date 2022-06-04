@@ -22,8 +22,8 @@ class JPAGenreRepositoryTest {
     @Test
     void saveInsert() {
         var genre=new Genre();
-        genre.setName("Martial2 arts");
-        genre.setDescription("uuuuuuuuuuuuuuuuuuuuuuuuuuu");
+        genre.setName("Historical");
+        genre.setDescription("Old real life events");
         assertDoesNotThrow(()-> {
             jpaGenreRepository.save(genre);
         });
@@ -34,7 +34,7 @@ class JPAGenreRepositoryTest {
     void saveUpdate(){
         var genre=new Genre();
         genre.setName("Science fiction");
-        genre.setDescription("poopoo");
+        genre.setDescription("spaceships and shit");
         genre.setGenreId(1);
         assertDoesNotThrow(()-> {
             jpaGenreRepository.save(genre);

@@ -6,7 +6,7 @@
         <!-- <class>cat.uvic.teknos.m06.MangaApp.domain.models.Chapter</class> -->
         <class>cat.uvic.teknos.m06.MangaApp.domain.models.Cover</class>
         <class>cat.uvic.teknos.m06.MangaApp.domain.models.Genre</class>
-        <!-- <class>>cat.uvic.teknos.m06.MangaApp.domain.models.Manga</class> -->
+        <class>cat.uvic.teknos.m06.MangaApp.domain.models.Manga</class>
 
         <properties>
             <!--<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />-->
