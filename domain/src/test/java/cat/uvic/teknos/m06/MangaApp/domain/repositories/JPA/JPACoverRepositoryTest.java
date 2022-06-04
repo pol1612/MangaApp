@@ -51,6 +51,19 @@ class JPACoverRepositoryTest {
     }
     @Test
     void delete() {
+        var entityManager=entityManagerFactory.createEntityManager();
+        var entityManager1=entityManagerFactory.createEntityManager();
+        var berserkCover=entityManager.find(Cover.class, MODEL_TO_DELETE);
+
+        assertNotNull(berserkCover);
+
+        assertDoesNotThrow(() -> {
+            jpaCoverRepository.delete(MODEL_TO_DELETE);
+        });
+
+        berserkCover=entityManager1.find(Cover.class,MODEL_TO_DELETE);
+
+        assertNull(berserkCover);
     }
 
     @Test
