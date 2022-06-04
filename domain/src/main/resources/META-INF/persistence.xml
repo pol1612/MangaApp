@@ -4,7 +4,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- <class>cat.uvic.teknos.m06.MangaApp.domain.models.Chapter</class> -->
-        <!-- <class>cat.uvic.teknos.m06.MangaApp.domain.models.Cover</class> -->
+        <class>cat.uvic.teknos.m06.MangaApp.domain.models.Cover</class>
         <class>cat.uvic.teknos.m06.MangaApp.domain.models.Genre</class>
         <!-- <class>>cat.uvic.teknos.m06.MangaApp.domain.models.Manga</class> -->
 

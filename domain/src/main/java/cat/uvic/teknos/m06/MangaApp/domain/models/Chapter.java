@@ -1,13 +1,11 @@
 package cat.uvic.teknos.m06.MangaApp.domain.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 public class Chapter {
+    @Transient
     private Manga manga;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
