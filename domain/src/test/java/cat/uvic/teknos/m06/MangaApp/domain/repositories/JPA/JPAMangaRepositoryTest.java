@@ -68,9 +68,14 @@ class JPAMangaRepositoryTest {
 
     @Test
     void getById() {
+        var manga=jpaMangaRepository.GetById(3);
+        assertNotNull(manga);
     }
 
     @Test
     void getAll() {
+        var mangas=jpaMangaRepository.GetAll();
+        assertNotNull(mangas);
+        assertTrue(mangas.size()>0);
     }
 }
