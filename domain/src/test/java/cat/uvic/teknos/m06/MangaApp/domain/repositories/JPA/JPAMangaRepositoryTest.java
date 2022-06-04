@@ -51,6 +51,19 @@ class JPAMangaRepositoryTest {
 
     @Test
     void delete() {
+        var entityManager=entityManagerFactory.createEntityManager();
+        var entityManager1=entityManagerFactory.createEntityManager();
+        var fairyTail=entityManager.find(Manga.class, MODEL_TO_DELETE);
+
+        assertNotNull(fairyTail);
+
+        assertDoesNotThrow(() -> {
+            jpaMangaRepository.delete(MODEL_TO_DELETE);
+        });
+
+        fairyTail=entityManager1.find(Manga.class,MODEL_TO_DELETE);
+
+        assertNull(fairyTail);
     }
 
     @Test
