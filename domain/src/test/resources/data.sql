@@ -1,3 +1,3 @@
 INSERT INTO GENRE (NAME,DESCRIPTION) values ("Martial Arts","Murim and shit"), ("Romance","dokie.dokie"), ("spokon","sports and shit");
-INSERT INTO COVER (COVER_PATH, WIDTH,HEIGHT) VALUES ("images/berserkCover.png",250,10),("images/onePieceCover.png",250,20),("images/fairyTailCover.png",240,20);
-
+INSERT INTO COVER (COVER_PATH, WIDTH,HEIGHT) VALUES ("images/berserkCover.png",250,10), ("images/onePieceCover.png",250,20), ("images/fairyTailCover.png",240,20),("images/Dr.StoneCover.png",260,10);
+INSERT INTO MANGA (COVER_ID, TITLE, DESCRIPTION) VALUES (1,"Berserk","the journey of a man to find himself in a hellish world"),(3,"Fairy Tail","The adventures of the mages Natsu and Lucy"),(4,"Dr. Stone","Senkuu has to restart civilization to go to the moon??!!!");

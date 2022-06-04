@@ -76,6 +76,6 @@ class JPACoverRepositoryTest {
     void getAll() {
         var genres=jpaCoverRepository.GetAll();
         assertNotNull(genres);
-        assertTrue(genres.size()==2);
+        assertTrue(genres.size()>0);
     }
 }
