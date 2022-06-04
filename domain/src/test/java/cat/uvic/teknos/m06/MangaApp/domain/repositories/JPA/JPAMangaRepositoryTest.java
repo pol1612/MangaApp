@@ -1,5 +1,6 @@
 package cat.uvic.teknos.m06.MangaApp.domain.repositories.JPA;
 
+import cat.uvic.teknos.m06.MangaApp.domain.models.Cover;
 import cat.uvic.teknos.m06.MangaApp.domain.models.Manga;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,18 @@ class JPAMangaRepositoryTest {
 
     @Test
     void saveUpdate() {
-
+        var manga=new Manga();
+        manga.setMangaId(1);
+        manga.setTitle("berserk update");
+        manga.setDescription("griffin is a bitch");
+        manga.setCoverId(1);
+        assertDoesNotThrow(()-> {
+            jpaMangaRepository.save(manga);
+        });
+        var entityManager=entityManagerFactory.createEntityManager();
+        var modifiedManga=entityManager.find(Manga.class,1);
+        assertEquals("griffin is a bitch", modifiedManga.getDescription());
+        entityManager.close();
     }
 
     @Test
