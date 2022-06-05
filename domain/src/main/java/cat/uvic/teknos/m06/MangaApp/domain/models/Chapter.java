@@ -5,8 +5,8 @@ import java.sql.Date;
 
 @Entity
 public class Chapter {
-    @Transient
-    private Manga manga;
+
+    private int mangaId;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int chapterId;
@@ -15,11 +15,11 @@ public class Chapter {
     private Date dateOfUploading;
 
     public int getMangaId(){
-        return manga.getMangaId();
+        return mangaId;
     }
 
     public void setMangaId(int mangaId) {
-        this.manga.setMangaId(mangaId);
+      this.mangaId=mangaId;
     }
     
 
