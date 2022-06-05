@@ -29,12 +29,29 @@ class JPAChapterRepositoryTest {
         chapter.setChapterTitle("age of stone");
         Date date=new Date(2022-06-05);
         chapter.setDateOfUploading(date);
+        chapter.setMangaId(3);
         assertDoesNotThrow(()-> {
             jpaChapterRepository.save(chapter);
         });
         assertTrue(chapter.getChapterId()>0);
     }
-
+    @Test
+    void saveUpdate(){
+       var chapter=new Chapter();
+       chapter.setChapterId(1);
+       chapter.setChapterTitle("A long time ago");
+       chapter.setChapterNumber(0);
+       chapter.setMangaId(1);
+        Date date=new Date(2021-04-17);
+       chapter.setDateOfUploading(date);
+        assertDoesNotThrow(()-> {
+            jpaChapterRepository.save(chapter);
+        });
+        var entityManager=entityManagerFactory.createEntityManager();
+        var modifiedChapter=entityManager.find(Chapter.class,1);
+        assertEquals("A long time ago", modifiedChapter.getChapterTitle());
+        entityManager.close();
+    }
     @Test
     void delete() {
     }
