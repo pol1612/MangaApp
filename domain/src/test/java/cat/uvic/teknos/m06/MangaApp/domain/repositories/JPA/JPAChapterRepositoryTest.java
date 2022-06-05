@@ -54,6 +54,19 @@ class JPAChapterRepositoryTest {
     }
     @Test
     void delete() {
+        var entityManager=entityManagerFactory.createEntityManager();
+        var entityManager1=entityManagerFactory.createEntityManager();
+        var war2=entityManager.find(Chapter.class, MODEL_TO_DELETE);
+
+        assertNotNull(war2);
+
+        assertDoesNotThrow(() -> {
+            jpaChapterRepository.delete(MODEL_TO_DELETE);
+        });
+
+        war2=entityManager1.find(Chapter.class,MODEL_TO_DELETE);
+
+        assertNull(war2);
     }
 
     @Test
