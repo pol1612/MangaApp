@@ -71,9 +71,14 @@ class JPAChapterRepositoryTest {
 
     @Test
     void getById() {
+        var genre=jpaChapterRepository.GetById(1);
+        assertNotNull(genre);
     }
 
     @Test
     void getAll() {
+        var chapters = jpaChapterRepository.GetAll();
+        assertNotNull(chapters);
+        assertTrue(chapters.size() > 0);
     }
 }
