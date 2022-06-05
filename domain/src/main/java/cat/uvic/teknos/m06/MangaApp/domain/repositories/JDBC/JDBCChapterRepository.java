@@ -28,13 +28,13 @@ public class JDBCChapterRepository implements RepositoriesDo<Chapter,Integer> {
             PreparedStatement preparedStatement1=connection.prepareStatement("UPDATE MANGA_APP.CHAPTER SET MANGA_ID=?,CHAPTER_NUMBER=?,CHAPTER_TITLE=?,DATE_OF_UPLOADING=? WHERE CHAPTER_ID=?;");
             if(chapter.getChapterId()==0){
                 preparedStatement.setInt(1,chapter.getMangaId());
-                preparedStatement.setInt(2,chapter.getChapterNumber());
+                preparedStatement.setDouble(2,chapter.getChapterNumber());
                 preparedStatement.setString(3,chapter.getChapterTitle());
                 preparedStatement.setDate(4,chapter.getDateOfUploading());
                 preparedStatement.executeUpdate();
             }else{
                 preparedStatement1.setInt(1,chapter.getMangaId());
-                preparedStatement1.setInt(2,chapter.getChapterNumber());
+                preparedStatement1.setDouble(2,chapter.getChapterNumber());
                 preparedStatement1.setString(3,chapter.getChapterTitle());
                 preparedStatement1.setDate(4,chapter.getDateOfUploading());
                 preparedStatement1.setInt(5,chapter.getChapterId());

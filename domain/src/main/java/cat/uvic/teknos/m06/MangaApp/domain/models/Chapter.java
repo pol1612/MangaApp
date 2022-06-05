@@ -10,7 +10,7 @@ public class Chapter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int chapterId;
-    private int chapterNumber;
+    private double chapterNumber;
     private String chapterTitle;
     private Date dateOfUploading;
 
@@ -31,11 +31,11 @@ public class Chapter {
         this.chapterId = chapterId;
     }
 
-    public int getChapterNumber() {
+    public double getChapterNumber() {
         return chapterNumber;
     }
 
-    public void setChapterNumber(int chapterNumber) {
+    public void setChapterNumber(double chapterNumber) {
         this.chapterNumber = chapterNumber;
     }
 
